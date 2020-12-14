@@ -24,7 +24,7 @@ std::string Data::getType() {
 
 void Data::construireData(char chaine[], int type)
 {
-
+	//Je suis un bambou
 }
 
 std::string Data::lire()
