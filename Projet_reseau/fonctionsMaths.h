@@ -5,7 +5,7 @@
 #include <fstream>
 class fonctionsMaths
 {
-public:
+public: //HAHAHAHA
 	static unsigned long hexToDec(std::string n,int taille);
 	static std::string getByteLine(std::ifstream *f);
 };
