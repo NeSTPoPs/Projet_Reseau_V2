@@ -1,35 +1,21 @@
 #Makefile pour Projet 
+all: main
 
-main: main.cpp 
-	g++ -o main main.cpp
+main: main.o fonctionsMaths.o Trame.o IpFrame.o
+	g++ -o main main.o fonctionsMaths.o IpFrame.o Trame.o
 
-Data : Data.h
-	g++ -o Data Data.o 
+main.o: main.cpp fonctionsMaths.h IpFrame.h Trame.h
+	g++ -Wall -c main.cpp
 
-Data.o: Data.cpp
-	g++ -o Data Data.cpp Data.h
+fonctionsMaths.o: fonctionsMaths.cpp fonctionsMaths.h
+	g++ -Wall -c fonctionsMaths.cpp
 
-Trame: Trame.h 
-	g++ -o Trame Trame.o
-
-Trame.o: Trame.cpp
-	g++ -o Trame Trame.cpp Trame.h 
-
-functionsMaths: functionsMaths.h
-	g++ -o functionsMaths functionsMaths.o
-
-functionsMaths.o: functionsMaths.cpp functionsMaths.h
-	g++ -o functionsMaths functionsMaths.cpp 
-
-IpFrame: IpFrame.h
-	g++ -o IpFrame IpFrame.o
+Trame.o: Trame.cpp Trame.h
+	g++ -Wall -c Trame.cpp
 
 IpFrame.o: IpFrame.cpp IpFrame.h
-	g++ -o IpFrame IpFrame.cpp 
+	g++ -Wall -c IpFrame.cpp 
 
 clean: 
-	rm -f main Trame.o functionsMaths.o IpFrame.o 
-
-
-
+	rm -f main *.o
 	
