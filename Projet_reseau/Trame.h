@@ -13,6 +13,7 @@ class Trame
 public:
 	Trame(); // Constructeur utilisé pour le debogage
 	Trame(std::string t); // Constructeur qui sera utilisé pour lire une trame. 't' est toute la chaine de la trame.
+	~Trame();
 	Data getData();
 	int* getDestAdd();
 	int* getSrcAdd();

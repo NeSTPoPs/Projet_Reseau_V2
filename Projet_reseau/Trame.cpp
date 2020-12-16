@@ -21,6 +21,10 @@ Trame::Trame(std::string t)
 	this->d = NULL;
 }
 
+Trame::~Trame()
+{
+}
+
 void Trame::newDestAdd(int ip[6]) {
 	for (int i = 0; i < 6; i++) {
 		this->destAdd[i] = ip[i];

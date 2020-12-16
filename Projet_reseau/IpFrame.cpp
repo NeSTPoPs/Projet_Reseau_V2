@@ -21,6 +21,10 @@ IpFrame::IpFrame() {
 	d = NULL;
 }
 
+IpFrame::~IpFrame()
+{
+}
+
 std::string IpFrame::lire()
 {
 

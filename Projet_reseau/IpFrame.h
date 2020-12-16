@@ -7,6 +7,7 @@ class IpFrame : public Data
 {
 public:
 	IpFrame();
+	~IpFrame();
 	std::string lire();
 	void construireData(char chaine[], int type);
 	void afficherData();
