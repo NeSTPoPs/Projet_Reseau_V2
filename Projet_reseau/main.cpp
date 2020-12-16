@@ -8,7 +8,7 @@ using namespace std;
 
 int main() {
 	Trame Eth;
-	ifstream f("C:/Users/quent/OneDrive/Bureau/text.txt"); //Ouverture fichier en lecture seule
+	ifstream f("analyse_donnee.txt"); //Ouverture fichier en lecture seule
 	string ligne;
 	string chaine;
 	string test = "ffff";
