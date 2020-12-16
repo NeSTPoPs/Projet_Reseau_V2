@@ -16,7 +16,7 @@ public:
 	virtual void afficherData();
 	void construireData(char chaine[], int type);
 private:
-	std::string type;
+	std::string type; //Je vais surement retirer ça ...
 };
 
 #endif
