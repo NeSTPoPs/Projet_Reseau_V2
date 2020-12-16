@@ -153,6 +153,9 @@
     <ClInclude Include="IpFrame.h" />
     <ClInclude Include="Trame.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Makefile.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

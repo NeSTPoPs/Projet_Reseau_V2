@@ -73,7 +73,7 @@ void Trame::construireTrame(std::string chaine)
 	int dest[6];
 	int src[6];
 	for (int i = 0; i < 6; i++) {
-		dest[i] = fonctionsMaths::hexToDec(&(chaine[i*2]), 2);
+		dest[i] = fonctionsMaths::hexToDec(&(chaine[(i*2)]), 2);
 		src[i] = fonctionsMaths::hexToDec(&(chaine[(i*2) + 12]), 2);
 	}
 	this->type = fonctionsMaths::hexToDec(&(chaine[24]), 4);
