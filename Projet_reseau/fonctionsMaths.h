@@ -3,13 +3,11 @@
 
 #include <string>
 #include <fstream>
-class fonctionsMaths //Test
+class fonctionsMaths
 {
 public:
 	static unsigned long hexToDec(std::string n,int taille);
 	static std::string getByteLine(std::ifstream *f);
-private:
-	int n;
 };
 
 #endif
