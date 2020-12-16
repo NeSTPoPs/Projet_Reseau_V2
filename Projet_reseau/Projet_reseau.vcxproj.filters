@@ -55,7 +55,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Makefile.txt">
+    <Text Include="makefile">
       <Filter>MakeFile</Filter>
     </Text>
   </ItemGroup>

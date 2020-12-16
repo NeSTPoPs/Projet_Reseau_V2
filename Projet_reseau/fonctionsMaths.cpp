@@ -2,12 +2,12 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <math.h>
 
 unsigned long fonctionsMaths::hexToDec(std::string n,int taille)
 {
     unsigned long r = 0;
     unsigned long tmp = 0;
-    int i = 0;
     for (int i = taille - 1; i >= 0; i = i-1 ){
         if ((n[i] <= 'f' && n[i] >= 'a') || (n[i] <= 'F' && n[i] >= 'A')) {
             if (n[i] <= 'f' && n[i] >= 'a')

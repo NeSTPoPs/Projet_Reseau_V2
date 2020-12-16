@@ -154,7 +154,7 @@
     <ClInclude Include="Trame.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Makefile.txt" />
+    <Text Include="makefile" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
