@@ -14,8 +14,9 @@ fonctionsMaths.o: fonctionsMaths.cpp fonctionsMaths.h
 
 Data.o:	Data.cpp Data.h fonctionsMaths.h
 	g++ -Wall -c Data.cpp
+
 clean: 
-	rm -f main Trame.o functionsMaths.o IpFrame.o 
+	rm -f main *.o
 
 
 
