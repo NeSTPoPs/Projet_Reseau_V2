@@ -3,7 +3,7 @@
 
 #include <string>
 #include <fstream>
-static class fonctionsMaths
+class fonctionsMaths
 {
 public:
 	static unsigned long hexToDec(std::string n,int taille);
