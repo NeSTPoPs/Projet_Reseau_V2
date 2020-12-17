@@ -11,20 +11,18 @@ int main() {
 	ifstream f("analyse_donnee.txt"); //Ouverture fichier en lecture seule
 	string ligne;
 	string chaine;
-	string test = "ffff";
-	int res = fonctionsMaths::hexToDec(test, 4);
-	std::cout << res << endl;
+	//string test = "ffff";
+	//int res = fonctionsMaths::hexToDec(test, 4);
+	//std::cout << res << endl;
 	while (f) {
 		ligne = fonctionsMaths::getByteLine(&f);
 		chaine.append(ligne);
 		
 	}
-	std::cout << chaine << '\n';
+	//std::cout << chaine << '\n';
 	Eth.construireTrame(chaine);
 	Eth.afficherTrame();
 	
-	char phrase[] = { "\nMaman est dans le garage" };
-	std::cout << &(phrase[0]) << endl;
 
 	return 0;
 }

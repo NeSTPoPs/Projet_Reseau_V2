@@ -31,24 +31,45 @@ std::string IpFrame::lire()
 	return std::string();
 }
 
-void IpFrame::afficherData() {
-	printf("====Datagramme IP====\n");
-	printf("Version: %x\n", this->version);
-	printf("IHL: %x\n", this->ihl);
-	printf("TOS: %x\n", this->tos);
-	printf("Total length: %i octets (0x%.4x)\n", this->totalLength, this->totalLength);
-	printf("Identification :%x\n", this->identification);
-	printf("Flags :%x\n", this->flags);
-	printf("Fragment offset :%x\n", this->fragmentOffset);
-	printf("TTL :%x\n", this->ttl);
-	printf("Protocol :%x\n", this->protocol);
-	printf("Header Checksum :%x\n", this->headerChecksum);
-	std::cout << "Source IP Address : ";
+const char * IpFrame::strProtocol()
+{
+	switch (this->protocol) {
+	case 1:
+		//Protocol ICMP
+		return "ICMP";
+		break;
+
+	default:
+		return "Protocol non reconnu";
+		break;
+	}
+	return "Protocol non reconnu";
+}
+
+void IpFrame::afficherData(int tabulation) {
+	char tab[5];
+	for (int i = 0; i < tabulation; i++) {
+		tab[i] = '\t';
+	}
+	tab[tabulation] = '\0';
+
+	printf("%s====Datagramme IP====\n",tab);
+	printf("%sVersion: %x\n",tab, this->version);
+	printf("%sIHL: %x\n", tab, this->ihl);
+	printf("%sTOS: %x\n", tab, this->tos);
+	printf("%sTotal length: %i octets (0x%.4x)\n", tab, this->totalLength, this->totalLength);
+	printf("%sIdentification :%x\n", tab, this->identification);
+	printf("%sFlags :%x\n", tab, this->flags);
+	printf("%sFragment offset :%x\n", tab, this->fragmentOffset);
+	printf("%sTTL :%x\n", tab, this->ttl);
+	printf("%sProtocol :%x (%s)\n", tab, this->protocol, this->strProtocol());
+	printf("%sHeader Checksum :%x\n", tab, this->headerChecksum);
+	printf("%sSource IP Address : ", tab);
 	printf("%i", this->srcAdd[0]);
 	for (int i = 1; i < 4; i++) {
 		printf(".%i", this->srcAdd[i]);
 	}
-	std::cout << "\nDestination IP Address : ";
+	printf("\n%sDestination IP Address : ", tab);
 	printf("%i", this->destAdd[0]);
 	for (int i = 1; i < 4; i++) {
 		printf(".%i", this->destAdd[i]);

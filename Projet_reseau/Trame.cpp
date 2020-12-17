@@ -45,6 +45,7 @@ void Trame::newData(Data *d) {
 
 void Trame::afficherTrame()
 {
+	std::cout << "===Ethernet===\n";
 	std::cout << "Source MAC Address : ";
 	for (int i = 0; i < 5; i++) {
 		printf("%x.", this->srcAdd[i]);
@@ -59,7 +60,7 @@ void Trame::afficherTrame()
 	printf("Type:%04x\n", this->type);
 	if (this->type == 0x800) {
 		IpFrame* piF = (IpFrame*)this->d;
-		piF->afficherData();
+		piF->afficherData(1);
 	}
 	return;
 }
