@@ -19,7 +19,7 @@ int main() {
 		chaine.append(ligne);
 		
 	}
-	std::cout << chaine << '\n';
+	//std::cout << chaine << '\n';
 	Eth.construireTrame(chaine);
 	Eth.afficherTrame();
 	

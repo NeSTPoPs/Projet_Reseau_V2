@@ -182,11 +182,16 @@ unsigned int fonctionsMaths::length(char* chaine)
         return 0;
     int i = 0;
     while (chaine[i] != '\0' && chaine[i] != 'EOF') {
-        printf("ch[i] = %c\n", chaine[i]);
         i++;
     }
-    printf("TAILLE DE LA CHAINE : %i\n", i);
     return i;
+}
+
+int fonctionsMaths::est_hexadecimal(char c)
+{
+    if ((c <= 'f' && c >= 'a') || (c <= 'F' && c >= 'A') || (c <= '9' && c >= '0'))
+        return 1;
+    return 0;
 }
 
 

@@ -27,6 +27,8 @@ public:
 	/* affiche correctement des addresses mac et IP avec des points */
 
 	static unsigned int length(char* chaine);
+
+	static int est_hexadecimal(char c);
 };
 
 #endif

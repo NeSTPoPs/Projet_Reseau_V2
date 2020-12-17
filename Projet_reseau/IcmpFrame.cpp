@@ -30,11 +30,12 @@ void IcmpFrame::construireData(char chaine[])
 	this->seqNum = fonctionsMaths::hexToDec(&(chaine[12]), 4);
 	int i = 16;
 	int j = 0;
-	while (chaine[i] != '\0' && chaine[i] != 'EOF') {
+	while ( fonctionsMaths::est_hexadecimal(chaine[i]) == 1 ) {
 		this->opData[j] = chaine[i];
 		j++;
 		i++;
 	}
+	this->opData[j] = '\0';
 }
 
 void IcmpFrame::afficherData(const int tabulation)
