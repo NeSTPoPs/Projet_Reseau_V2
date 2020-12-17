@@ -1,7 +1,9 @@
 #ifndef DEF_IPFRAME
 #define DEF_IPFRAME
+#define _CRT_SECURE_NO_WARNINGS_GLOBALS
 
 #include "Data.h"
+#include "IcmpFrame.h"
 
 class IpFrame : public Data
 {
@@ -26,7 +28,7 @@ private:
 	int srcAdd[4];
 	int destAdd[4];
 	int options;
-	Data* d;
+	IcmpFrame* icmpF;
 };
 
 #endif

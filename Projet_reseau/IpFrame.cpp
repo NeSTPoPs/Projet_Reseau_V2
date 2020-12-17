@@ -18,7 +18,7 @@ IpFrame::IpFrame() {
 		destAdd[i] = 0;
 		srcAdd[i] = 0;
 	}
-	d = NULL;
+	icmpF = NULL;
 }
 
 IpFrame::IpFrame(char* chaine)
@@ -29,6 +29,8 @@ IpFrame::IpFrame(char* chaine)
 
 IpFrame::~IpFrame()
 {
+	if (this->icmpF)
+		delete this->icmpF;
 }
 
 std::string IpFrame::lire()
@@ -62,6 +64,8 @@ void IpFrame::afficherData(int tabulation) {
 	printf("\n%sDestination IP Address : ", tab);
 	fonctionsMaths::afficheIpAdress(this->destAdd);
 	printf("\n");
+	if (this->icmpF)
+		this->icmpF->afficherData(tabulation + 1);
 	return;
 }
 
@@ -86,4 +90,14 @@ void IpFrame::construireData(char chaine[])
 		this->srcAdd[i] = fonctionsMaths::hexToDec(&(chaine[24 + (i*2)]), 2);
 		this->destAdd[i] = fonctionsMaths::hexToDec(&(chaine[32 + (i*2)]), 2);
 	}
+
+	int i = 40;
+	while ( (i+4<this->ttl) && not (fonctionsMaths::hexToDec(&(chaine[i]), 4) == 0x0800)) {
+		//On recherche le protocole ICMP qui est après les options
+		i++;
+	}
+	if (i + 4 >= this->ttl)
+		return;
+	IcmpFrame *icmpF = new IcmpFrame(&(chaine[i]));
+	this->icmpF = icmpF;
 }

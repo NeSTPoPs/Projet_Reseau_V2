@@ -2,7 +2,7 @@
 #define DEF_DATA
 
 #include "fonctionsMaths.h"
-#include <string>
+
 class Data
 {
 protected:

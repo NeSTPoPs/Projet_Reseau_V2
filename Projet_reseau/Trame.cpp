@@ -23,6 +23,8 @@ Trame::Trame(std::string t)
 
 Trame::~Trame()
 {
+	if (this->d)
+		delete this->d;
 }
 
 void Trame::newDestAdd(int ip[6]) {

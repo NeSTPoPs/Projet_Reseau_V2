@@ -1,7 +1,7 @@
 #ifndef DEF_ARPFRAME
 #define DEF_ARPFRAME
 
-#include "Data.h";
+#include "Data.h"
 
 class ArpFrame : public Data
 {
