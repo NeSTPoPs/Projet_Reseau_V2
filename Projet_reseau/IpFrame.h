@@ -1,7 +1,6 @@
 #ifndef DEF_IPFRAME
 #define DEF_IPFRAME
 
-
 #include "Data.h"
 #include "IcmpFrame.h"
 

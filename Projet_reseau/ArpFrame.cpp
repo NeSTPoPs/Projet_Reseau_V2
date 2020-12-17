@@ -44,7 +44,7 @@ void ArpFrame::construireData(char chaine[])
 		this->senderIA[j] = fonctionsMaths::hexToDec(&(chaine[28 + (j*2)]), 2);
 		this->targetIA[j] = fonctionsMaths::hexToDec(&(chaine[48 + (j*2)]), 2);
 	}
-	
+
 }
 
 void ArpFrame::afficherData(const int tabulation)
@@ -55,10 +55,11 @@ void ArpFrame::afficherData(const int tabulation)
 	}
 	tab[tabulation] = '\0';
 	char protocolName[50];
+	fonctionsMaths::getProtocolName(this->protocol, protocolName);
 
 	printf("%s==== ARP ====\n", tab);
 	printf("%sHardware type: %i\n", tab, this->hardware);
-	printf("%sProtocol type: %.4x\n", tab, this->protocol);
+	printf("%sProtocol type: %.4x (%s)\n", tab, this->protocol, protocolName);
 	printf("%sHardware size: %i\n", tab, this->hLen);
 	printf("%sProtocol size: %i\n", tab, this->pLen);
 	printf("%sOpcode: %i\n", tab, this->operation);
