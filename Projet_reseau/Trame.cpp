@@ -58,15 +58,20 @@ void Trame::afficherTrame()
 	}
 	printf("%x\n", this->destAdd[5]);
 	printf("Type:%04x", this->type);
+	char protocolName[50];
+	fonctionsMaths::getProtocolName(this->type, protocolName);
+	printf(" (%s)\n", protocolName);
 	IpFrame* piF;
+	ArpFrame* paF;
+	
 	switch (this->type) {
 	case 0x800:
-		printf(" DoD Internet (Datagramme IP)\n");
 		piF = (IpFrame*)this->d;
 		piF->afficherData(1);
 		break;
 	case 0x806:
-		printf(" (ARP)\n");
+		paF = (ArpFrame*)this->d;
+		paF->afficherData(1);
 		break;
 	default:
 		//Protocol non reconnu

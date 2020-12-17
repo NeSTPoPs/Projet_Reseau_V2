@@ -40,5 +40,9 @@ void Data::afficherData()
 {
 }
 
+void Data::afficherData(int tabulation)
+{
+}
+
 
 

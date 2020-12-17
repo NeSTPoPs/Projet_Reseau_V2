@@ -4,6 +4,7 @@
 #include <string>
 #include "fonctionsMaths.h"
 #include "IpFrame.h"
+#include "ArpFrame.h"
 
 /*Cette classe contient TOUTE les informations de la trame. Elle contient explicitement les donnés de la trame Ethernet
 * et met le reste dans le champ 'data'. Data est une classe mère pour les classes IpFrame, TCP, DHCP , ... */

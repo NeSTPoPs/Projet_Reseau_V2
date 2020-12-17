@@ -55,4 +55,57 @@ std::string fonctionsMaths::getByteLine(std::ifstream* f)
     return "-1" ;
 }
 
+char* fonctionsMaths::getProtocolName(int protocol, char *p)
+{
+    std::string pName;
+    switch (protocol) {
+    case 1 :
+        pName = "Internet Control Message Protocol (ICMP)";
+        break;
+    case 2:
+        pName = "Internet Group Management Protocol (IGMP)";
+        break;
+    case 6:
+        pName = "Transmission Control Protocol (TCP)";
+        break;
+    case 8:
+        pName = "Exterior Gateway Protocol (EGP)";
+        break;
+    case 9:
+        pName = "any private Interior Gateway Protocol (IGP)";
+        break;
+    case 17:
+        pName = "User Datagram Protocol (UDP)";
+        break;
+    case 36:
+        pName = "XTP";
+        break;
+    case 46:
+        pName = "Reservation Protocol (RSVP)";
+        break;
+    case 0x800:
+        pName = "DoD Internet (Datagramme IP)";
+        break;
+    case 0x805:
+        pName = "X.25 niveau 3";
+        break;
+    case 0x806:
+        pName = "ARP";
+        break;
+    case 0x8035:
+        pName = "RARP";
+        break;
+    case 0x8098:
+        pName = "AppleTalk";
+        break;
+    default:
+        pName = "Protocol non reconnu";
+    }
+    for (int i = 0; i < pName.length(); i++) {
+        p[i] = pName[i];
+    }
+    p[pName.length()] = '\0';
+    return p;
+}
+
 

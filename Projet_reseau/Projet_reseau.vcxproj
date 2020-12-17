@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArpFrame.cpp" />
     <ClCompile Include="Data.cpp" />
     <ClCompile Include="DataType.cpp" />
     <ClCompile Include="fonctionsMaths.cpp" />
@@ -147,6 +148,7 @@
     <ClCompile Include="Trame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArpFrame.h" />
     <ClInclude Include="Data.h" />
     <ClInclude Include="DataType.h" />
     <ClInclude Include="fonctionsMaths.h" />

@@ -31,27 +31,13 @@ std::string IpFrame::lire()
 	return std::string();
 }
 
-const char * IpFrame::strProtocol()
-{
-	switch (this->protocol) {
-	case 1:
-		//Protocol ICMP
-		return "ICMP";
-		break;
-
-	default:
-		return "Protocol non reconnu";
-		break;
-	}
-	return "Protocol non reconnu";
-}
-
 void IpFrame::afficherData(int tabulation) {
 	char tab[5];
 	for (int i = 0; i < tabulation; i++) {
 		tab[i] = '\t';
 	}
 	tab[tabulation] = '\0';
+	char protocolName[50];
 
 	printf("%s====Datagramme IP====\n",tab);
 	printf("%sVersion: %x\n",tab, this->version);
@@ -60,9 +46,10 @@ void IpFrame::afficherData(int tabulation) {
 	printf("%sTotal length: %i octets\n", tab, this->totalLength);
 	printf("%sIdentification : 0x%x (%i)\n", tab, this->identification, this->identification);
 	printf("%sFlags : 0x%.4x\n", tab, this->flags);
-	printf("%sFragment offset : 0x%x\n", tab, this->fragmentOffset);
+	printf("%sFragment offset : 0x%.4x\n", tab, this->fragmentOffset);
 	printf("%sTime to live : %i\n", tab, this->ttl);
-	printf("%sProtocol : 0x%x (%s)\n", tab, this->protocol, this->strProtocol());
+	fonctionsMaths::getProtocolName(this->protocol, protocolName);
+	printf("%sProtocol : 0x%.2x (%s)\n", tab, this->protocol, protocolName);
 	printf("%sHeader Checksum : 0x%x\n", tab, this->headerChecksum);
 	printf("%sSource IP Address : ", tab);
 	printf("%i", this->srcAdd[0]);

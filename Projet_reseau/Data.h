@@ -15,6 +15,7 @@ public:
 	std::string getType();
 	std::string lire();
 	virtual void afficherData();
+	virtual void afficherData(const int tabulation);
 	void construireData(char chaine[], int type);
 private:
 	std::string type; //Je vais surement retirer ça ...
