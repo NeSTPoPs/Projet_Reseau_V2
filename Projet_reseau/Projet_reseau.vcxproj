@@ -154,6 +154,7 @@
     <ClInclude Include="Trame.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="analyse_donnee.txt" />
     <Text Include="makefile" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
