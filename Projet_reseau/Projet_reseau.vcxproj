@@ -146,6 +146,7 @@
     <ClCompile Include="IcmpFrame.cpp" />
     <ClCompile Include="IpFrame.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TcpFrame.cpp" />
     <ClCompile Include="Trame.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +156,7 @@
     <ClInclude Include="fonctionsMaths.h" />
     <ClInclude Include="IcmpFrame.h" />
     <ClInclude Include="IpFrame.h" />
+    <ClInclude Include="TcpFrame.h" />
     <ClInclude Include="Trame.h" />
   </ItemGroup>
   <ItemGroup>
