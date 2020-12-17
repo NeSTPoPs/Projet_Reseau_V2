@@ -16,7 +16,7 @@ public:
 	std::string lire();
 	virtual void afficherData();
 	virtual void afficherData(const int tabulation);
-	void construireData(char chaine[], int type);
+	void construireData(char chaine[]);
 private:
 	std::string type;
 };

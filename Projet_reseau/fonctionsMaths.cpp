@@ -108,4 +108,20 @@ char* fonctionsMaths::getProtocolName(int protocol, char *p)
     return p;
 }
 
+void fonctionsMaths::afficheMacAdress(int mac[6])
+{
+    printf("%.2x", mac[0]);
+    for (int i = 1; i < 6; i++) {
+        printf(".%.2x", mac[i]);
+    }
+}
+
+void fonctionsMaths::afficheIpAdress(int ip[4])
+{
+    printf("%i", ip[0]);
+    for (int i = 1; i < 4; i++) {
+        printf(".%i", ip[i]);
+    }
+}
+
 

@@ -7,10 +7,10 @@ class IpFrame : public Data
 {
 public:
 	IpFrame();
-	IpFrame(char* chaine, int type);
+	IpFrame(char* chaine);
 	~IpFrame();
 	std::string lire();
-	void construireData(char chaine[], int type);
+	void construireData(char chaine[]);
 	void afficherData(const int tabulation);
 private:
 	int version;

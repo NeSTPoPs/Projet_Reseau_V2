@@ -15,6 +15,8 @@ public:
 	cette fonction sert a obtenir une chaine de caractere indiquant le nom du protocol
 	lors de l'appel de cette fonctions, on utilise un pointeur char *p deja declare pour le modifier 
 	Cette fonction retourne le pointeur p */
+	static void afficheMacAdress(int mac[6]);
+	static void afficheIpAdress(int ip[4]);
 };
 
 #endif

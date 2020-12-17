@@ -21,10 +21,10 @@ IpFrame::IpFrame() {
 	d = NULL;
 }
 
-IpFrame::IpFrame(char* chaine, int type)
+IpFrame::IpFrame(char* chaine)
 {
 	*this = IpFrame();
-	this->construireData(chaine, type);
+	this->construireData(chaine);
 }
 
 IpFrame::~IpFrame()
@@ -52,25 +52,20 @@ void IpFrame::afficherData(int tabulation) {
 	printf("%sTotal length: %i octets\n", tab, this->totalLength);
 	printf("%sIdentification : 0x%x (%i)\n", tab, this->identification, this->identification);
 	printf("%sFlags : 0x%.4x\n", tab, this->flags);
-	printf("%sFragment offset : 0x%.4x\n", tab, this->fragmentOffset);
+	printf("%sFragment offset : %i\n", tab, this->fragmentOffset);
 	printf("%sTime to live : %i\n", tab, this->ttl);
 	fonctionsMaths::getProtocolName(this->protocol, protocolName);
-	printf("%sProtocol : 0x%.2x (%s)\n", tab, this->protocol, protocolName);
+	printf("%sProtocol : %i (%s)\n", tab, this->protocol, protocolName);
 	printf("%sHeader Checksum : 0x%x\n", tab, this->headerChecksum);
 	printf("%sSource IP Address : ", tab);
-	printf("%i", this->srcAdd[0]);
-	for (int i = 1; i < 4; i++) {
-		printf(".%i", this->srcAdd[i]);
-	}
+	fonctionsMaths::afficheIpAdress(this->srcAdd);
 	printf("\n%sDestination IP Address : ", tab);
-	printf("%i", this->destAdd[0]);
-	for (int i = 1; i < 4; i++) {
-		printf(".%i", this->destAdd[i]);
-	}
+	fonctionsMaths::afficheIpAdress(this->destAdd);
+	printf("\n");
 	return;
 }
 
-void IpFrame::construireData(char chaine[], int type)
+void IpFrame::construireData(char chaine[])
 {
 	int lecture;
 	this->version = fonctionsMaths::hexToDec(&(chaine[0]), 1);

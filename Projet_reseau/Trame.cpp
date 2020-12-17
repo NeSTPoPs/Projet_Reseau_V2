@@ -66,11 +66,11 @@ void Trame::afficherTrame()
 	
 	switch (this->type) {
 	case 0x800:
-		piF = (IpFrame*)this->d;
+		piF = (IpFrame*)this->d; //On cast le Data comme etant un IpFrame pour avoir la bonne fonction afficherData
 		piF->afficherData(1);
 		break;
 	case 0x806:
-		paF = (ArpFrame*)this->d;
+		paF = (ArpFrame*)this->d; //On cast le Data comme etant un ArpFrame pour avoir la bonne fonction afficherData
 		paF->afficherData(1);
 		break;
 	default:
@@ -100,11 +100,11 @@ void Trame::construireTrame(std::string chaine)
 	ArpFrame* aF;
 	switch (this->type) {
 	case 0x800:
-		iF = new IpFrame(&(chaine[28]), this->type);
+		iF = new IpFrame(&(chaine[28]));
 		this->d = iF;
 		break;
 	case 0x806:
-		aF = new ArpFrame(&(chaine[28]), this->type);
+		aF = new ArpFrame(&(chaine[28]));
 		this->d = aF;
 		break;
 	default:
