@@ -1,6 +1,6 @@
 #ifndef DEF_IPFRAME
 #define DEF_IPFRAME
-#define _CRT_SECURE_NO_WARNINGS_GLOBALS
+
 
 #include "Data.h"
 #include "IcmpFrame.h"

@@ -1,9 +1,9 @@
 #Makefile pour Projet TEST
 
-main: main.o Trame.o IpFrame.o fonctionsMaths.o Data.o
+main: main.o Trame.o IpFrame.o fonctionsMaths.o Data.o IcmpFrame.o
 	g++ -o main main.o Trame.o IpFrame.o fonctionsMaths.o Data.o
 
-Trame.o: Trame.cpp Trame.h fonctionsMaths.h IpFrame.h
+Trame.o: Trame.cpp Trame.h fonctionsMaths.h IpFrame.h IcmpFrame.h
 	g++ -Wall -c Trame.cpp
 
 IpFrame.o: IpFrame.cpp IpFrame.h Data.h
@@ -15,9 +15,8 @@ fonctionsMaths.o: fonctionsMaths.cpp fonctionsMaths.h
 Data.o:	Data.cpp Data.h fonctionsMaths.h
 	g++ -Wall -c Data.cpp
 
-clean: 
+ArpFrame.o:	ArpFrame.cpp ArpFrame.h Data.h
+		g++ -Wall -c ArpFrame.cpp
+
+clean:
 	rm -f main *.o
-
-
-
-	

@@ -10,7 +10,6 @@ protected:
 
 public:
 	Data();
-	~Data();
 	Data(std::string type);
 	std::string getType();
 	std::string lire();
