@@ -2,6 +2,7 @@
 
 ArpFrame::ArpFrame()
 {
+	this->newType("ARP");
 	hardware = 0;
 	protocol = 0;
 	hLen = 0;

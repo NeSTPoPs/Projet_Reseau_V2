@@ -2,7 +2,7 @@
 #include <iostream>
 
 IpFrame::IpFrame() {
-	this->newType("IP");
+	this->newType("DoD Internet(Datagramme IP)");
 	version = 0;
 	ihl = 0;
 	tos = 0;
