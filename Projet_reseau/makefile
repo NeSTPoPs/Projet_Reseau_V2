@@ -15,9 +15,8 @@ fonctionsMaths.o: fonctionsMaths.cpp fonctionsMaths.h
 Data.o:	Data.cpp Data.h fonctionsMaths.h
 	g++ -Wall -c Data.cpp
 
-clean: 
+ArpFrame.o:	ArpFrame.cpp ArpFrame.h Data.h
+		g++ -Wall -c ArpFrame.cpp
+
+clean:
 	rm -f main *.o
-
-
-
-	
