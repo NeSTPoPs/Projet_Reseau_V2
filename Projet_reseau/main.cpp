@@ -23,5 +23,8 @@ int main() {
 	Eth.construireTrame(chaine);
 	Eth.afficherTrame();
 	
+	char phrase[] = { "\nMaman est dans le garage" };
+	std::cout << &(phrase[0]) << endl;
+
 	return 0;
 }
