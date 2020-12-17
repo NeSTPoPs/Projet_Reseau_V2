@@ -37,7 +37,7 @@ std::string fonctionsMaths::getByteLine(std::ifstream* f)
         char byteLine[33];
         std::getline(*f,line);
         while ((i < 16) && (( i * 3 + 1) < line.length()) ) {
-            if (((line[ i * 3] < 'a' || line[ i * 3 ]>'f') && (line[i * 3] < 'A' || line[i * 3]>'F') && (line[i * 3] < '0' || line[i * 3]>'9')) 
+            if (((line[ i * 3] < 'a' || line[ i * 3 ]>'f') && (line[i * 3] < 'A' || line[i * 3]>'F') && (line[i * 3] < '0' || line[i * 3]>'9'))
                 || ((line[i * 3 + 1] < 'a' || line[i * 3 + 1]>'f') && (line[i * 3 + 1] < 'A' || line[i * 3 + 1]>'F') && (line[i * 3 + 1] < '0' || line[i * 3 + 1]>'9'))
                 ) { //Le caractere scann'e n'est pas un caractere hexadecimal
                 byteLine[i * 2] = '\0';
@@ -181,7 +181,7 @@ unsigned int fonctionsMaths::length(char* chaine)
     if (chaine == NULL)
         return 0;
     int i = 0;
-    while (chaine[i] != '\0' && chaine[i] != 'EOF') {
+    while (chaine[i] != '\0' && chaine[i] != EOF) {
         i++;
     }
     return i;
@@ -193,5 +193,3 @@ int fonctionsMaths::est_hexadecimal(char c)
         return 1;
     return 0;
 }
-
-
