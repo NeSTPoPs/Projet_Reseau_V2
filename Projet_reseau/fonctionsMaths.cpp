@@ -55,6 +55,58 @@ std::string fonctionsMaths::getByteLine(std::ifstream* f)
     return "-1" ;
 }
 
+char* fonctionsMaths::getIcmpType(int type, char* p) {
+    std::string pName;
+    switch (type) {
+    case 0:
+        pName = "Echo Reply";
+        break;
+    case 3:
+        pName = "Destination Unreachable";
+        break;
+    case 4:
+        pName = "Source Quench";
+        break;
+    case 5:
+        pName = "Redirect";
+        break;
+    case 8:
+        pName = "Echo";
+        break;
+    case 11:
+        pName = "Time Exceeded";
+        break;
+    case 12:
+        pName = "Parameter Problem";
+        break;
+    case 13:
+        pName = "Timestamp";
+        break;
+    case 14:
+        pName = "Timestamp Reply";
+        break;
+    case 15:
+        pName = "Information Request";
+        break;
+    case 16:
+        pName = "Information Reply";
+        break;
+    case 17:
+        pName = "Address Mask Request";
+        break;
+    case 18:
+        pName = "Address Mask Reply";
+        break;
+    default:
+        pName = "Type non reconnu";
+    }
+    for (int i = 0; i < pName.length(); i++) {
+        p[i] = pName[i];
+    }
+    p[pName.length()] = '\0';
+    return p;
+}
+
 char* fonctionsMaths::getProtocolName(int protocol, char *p)
 {
     std::string pName;

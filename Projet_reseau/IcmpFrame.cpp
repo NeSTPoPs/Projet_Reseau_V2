@@ -1,0 +1,51 @@
+#include "IcmpFrame.h"
+
+IcmpFrame::IcmpFrame()
+{
+	type = 0;
+	code = 0;
+	checksum = 0;
+	identifier = 0;
+	seqNum = 0;
+	opData = NULL;
+}
+
+IcmpFrame::IcmpFrame(char* chaine)
+{
+	*this = IcmpFrame();
+	this->construireData(chaine);
+}
+
+IcmpFrame::~IcmpFrame()
+{
+}
+
+void IcmpFrame::construireData(char chaine[])
+{
+	this->type = fonctionsMaths::hexToDec(&(chaine[0]),2);
+	this->code = fonctionsMaths::hexToDec(&(chaine[2]), 2);
+	this->checksum = fonctionsMaths::hexToDec(&(chaine[4]), 4);
+	this->identifier = fonctionsMaths::hexToDec(&(chaine[8]), 4);
+	this->seqNum = fonctionsMaths::hexToDec(&(chaine[12]), 4);
+	this->opData = &(chaine[16]);
+}
+
+void IcmpFrame::afficherData(const int tabulation)
+{
+	char tab[5];
+	for (int i = 0; i < tabulation; i++) {
+		tab[i] = '\t';
+	}
+	tab[tabulation] = '\0';
+	char typeName[50];
+	fonctionsMaths::getIcmpType(this->type, typeName);
+
+	printf("%s=== ICMP ===\n", tab);
+	printf("%sType: %i (%s)\n", tab, this->type, typeName);
+	printf("%sCode: %i\n", tab, this->code);
+	printf("%sChecksum: 0x%.4x\n", tab, this->checksum);
+	printf("%sIdentifier: %i(0x%.4x)\n", tab, this->identifier, this->identifier);
+	printf("%sSequence number: %i (0x%.4x)\n", tab, this->seqNum, this->seqNum);
+	printf("%s\n", tab);
+
+}
