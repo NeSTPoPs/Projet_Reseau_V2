@@ -98,8 +98,7 @@ void Trame::construireTrame(std::string chaine)
 	this->newSrcAdd(src);
 	if (this->type == 0x800)
 	{
-		IpFrame *iF = new IpFrame();
-		iF->construireData(&(chaine[28]), this->type);
+		IpFrame *iF = new IpFrame(&(chaine[28]), this->type);
 		this->d = iF;
 	}
 }
