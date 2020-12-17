@@ -18,7 +18,7 @@ public:
 	virtual void afficherData(const int tabulation);
 	void construireData(char chaine[], int type);
 private:
-	std::string type; //Je vais surement retirer ça ...
+	std::string type;
 };
 
 #endif
