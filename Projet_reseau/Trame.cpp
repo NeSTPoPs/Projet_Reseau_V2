@@ -96,12 +96,21 @@ void Trame::construireTrame(std::string chaine)
 	this->type = fonctionsMaths::hexToDec(&(chaine[24]), 4);
 	this->newDestAdd(dest);
 	this->newSrcAdd(src);
-	if (this->type == 0x800)
-	{
-		IpFrame *iF = new IpFrame();
-		iF->construireData(&(chaine[28]), this->type);
+	IpFrame* iF;
+	ArpFrame* aF;
+	switch (this->type) {
+	case 0x800:
+		iF = new IpFrame(&(chaine[28]), this->type);
 		this->d = iF;
+		break;
+	case 0x806:
+		aF = new ArpFrame(&(chaine[28]), this->type);
+		this->d = aF;
+		break;
+	default:
+		break;
 	}
+	return;
 }
 
 Data Trame::getData() {

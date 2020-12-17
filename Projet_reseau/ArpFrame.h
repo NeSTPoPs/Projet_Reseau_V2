@@ -3,10 +3,11 @@
 
 #include "Data.h";
 
-class ArpFrame : Data
+class ArpFrame : public Data
 {
 public:
 	ArpFrame();
+	ArpFrame(char* chaine, int type);
 	~ArpFrame();
 	void construireData(char chaine[], int type);
 	void afficherData(const int tabulation);

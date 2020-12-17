@@ -13,6 +13,12 @@ ArpFrame::ArpFrame()
 	targetIA = 0;
 }
 
+ArpFrame::ArpFrame(char* chaine, int type)
+{
+	*this = ArpFrame();
+	this->construireData(chaine, type);
+}
+
 ArpFrame::~ArpFrame()
 {
 }

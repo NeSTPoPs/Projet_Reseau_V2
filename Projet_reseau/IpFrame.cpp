@@ -21,6 +21,12 @@ IpFrame::IpFrame() {
 	d = NULL;
 }
 
+IpFrame::IpFrame(char* chaine, int type)
+{
+	*this = IpFrame();
+	this->construireData(chaine, type);
+}
+
 IpFrame::~IpFrame()
 {
 }
