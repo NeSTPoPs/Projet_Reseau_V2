@@ -23,7 +23,7 @@ unsigned long fonctionsMaths::hexToDec(std::string n,int taille)
                 return -1;
             }
         }
-        r = r + tmp * (unsigned) pow(16, taille - i - 1);
+        r = r + tmp * (unsigned long) pow(16, taille - i - 1);
     }
     return r;
 }

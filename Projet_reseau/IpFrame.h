@@ -9,8 +9,9 @@ public:
 	IpFrame();
 	~IpFrame();
 	std::string lire();
+	const char * strProtocol();
 	void construireData(char chaine[], int type);
-	void afficherData();
+	void afficherData(const int tabulation);
 private:
 	int version;
 	int ihl;

@@ -45,6 +45,7 @@ void Trame::newData(Data *d) {
 
 void Trame::afficherTrame()
 {
+	std::cout << "===Ethernet===\n";
 	std::cout << "Source MAC Address : ";
 	for (int i = 0; i < 5; i++) {
 		printf("%x.", this->srcAdd[i]);
@@ -56,10 +57,21 @@ void Trame::afficherTrame()
 		printf("%x.", this->destAdd[i]);
 	}
 	printf("%x\n", this->destAdd[5]);
-	printf("Type:%04x\n", this->type);
-	if (this->type == 0x800) {
-		IpFrame* piF = (IpFrame*)this->d;
-		piF->afficherData();
+	printf("Type:%04x", this->type);
+	IpFrame* piF;
+	switch (this->type) {
+	case 0x800:
+		printf(" DoD Internet (Datagramme IP)\n");
+		piF = (IpFrame*)this->d;
+		piF->afficherData(1);
+		break;
+	case 0x806:
+		printf(" (ARP)\n");
+		break;
+	default:
+		//Protocol non reconnu
+		printf(" (Protocol non reconnu)\n");
+		return;
 	}
 	return;
 }

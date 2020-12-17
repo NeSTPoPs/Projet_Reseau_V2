@@ -16,9 +16,6 @@
     <Filter Include="MakeFile">
       <UniqueIdentifier>{c2fe798c-6a22-4af4-94c6-5cb9bf7e898a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="donnee_analyse">
-      <UniqueIdentifier>{4a2bec33-6502-4119-b330-81f66fbc3056}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -62,7 +59,7 @@
       <Filter>MakeFile</Filter>
     </Text>
     <Text Include="analyse_donnee.txt">
-      <Filter>donnee_analyse</Filter>
+      <Filter>Fichiers de ressources</Filter>
     </Text>
   </ItemGroup>
 </Project>
