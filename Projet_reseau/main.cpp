@@ -14,15 +14,17 @@ int main() {
 	//string test = "ffff";
 	//int res = fonctionsMaths::hexToDec(test, 4);
 	//std::cout << res << endl;
-	while (f) {
+/* while (f) {
 		ligne = fonctionsMaths::getByteLine(&f);
 		chaine.append(ligne);
-		
-	}
+
+	} */
+	fonctionsMaths::getByteFile(&f);
+	
 	//std::cout << chaine << '\n';
 	Eth.construireTrame(chaine);
 	Eth.afficherTrame();
-	
+
 
 	return 0;
 }

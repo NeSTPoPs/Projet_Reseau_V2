@@ -28,14 +28,35 @@ unsigned long fonctionsMaths::hexToDec(std::string n,int taille)
     return r;
 }
 
-std::string fonctionsMaths::getByteLine(std::ifstream* f)
+std::string fonctionsMaths::getByteFile(std::ifstream* f)
+{
+  std::string ligne;
+  int offset = 0; // initialise offset décimal à 0
+  int *countOffset;
+  countOffset = &offset;
+
+  std::string res = "";
+  while (f) {
+		ligne = fonctionsMaths::getByteLine(f, countOffset);
+		res.append(ligne);
+	}
+  return res;
+}
+
+std::string fonctionsMaths::getByteLine(std::ifstream* f, int*offset)
 {
     //Analyse UNE SEULE LIGNE du fichier
     if (*f) {
         int i = 0;
         std::string line;
         char byteLine[33];
-        std::getline(*f,line);
+        std::getline(*f,line); // on lit la ligne en la consommant dans le fichier f
+
+        if((int)fonctionsMaths::hexToDec(line, 4) == offset) // on vérifie que l'offset correspond à ce qu'on lit
+          line = line[5];     // si ça correspond, on passe au contenu de la ligne
+        else
+          fonctionsMaths::getByteLine(f, offset);  // s'il ne correspond pas, on passe directement à la ligne suivante
+
         while ((i < 16) && (( i * 3 + 1) < line.length()) ) {
             if (((line[ i * 3] < 'a' || line[ i * 3 ]>'f') && (line[i * 3] < 'A' || line[i * 3]>'F') && (line[i * 3] < '0' || line[i * 3]>'9'))
                 || ((line[i * 3 + 1] < 'a' || line[i * 3 + 1]>'f') && (line[i * 3 + 1] < 'A' || line[i * 3 + 1]>'F') && (line[i * 3 + 1] < '0' || line[i * 3 + 1]>'9'))
@@ -46,6 +67,7 @@ std::string fonctionsMaths::getByteLine(std::ifstream* f)
             byteLine[i*2] = line[i*3];
             byteLine[(i*2)+1] = line[i * 3 + 1];
             i = i + 1;
+            offset = offset + 2;
         }
         byteLine[i * 2] = '\0';
         return byteLine;
