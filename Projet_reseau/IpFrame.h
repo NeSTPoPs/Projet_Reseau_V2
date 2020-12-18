@@ -3,6 +3,7 @@
 
 #include "Data.h"
 #include "IcmpFrame.h"
+#include "TcpFrame.h"
 
 class IpFrame : public Data
 {

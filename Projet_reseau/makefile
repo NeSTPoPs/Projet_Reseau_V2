@@ -1,12 +1,12 @@
 #Makefile pour Projet TEST
 
-main: main.o Trame.o IpFrame.o fonctionsMaths.o Data.o IcmpFrame.o ArpFrame.o
-	g++ -o main main.o Trame.o IpFrame.o fonctionsMaths.o Data.o IcmpFrame.o ArpFrame.o
+main: main.o Trame.o IpFrame.o fonctionsMaths.o Data.o IcmpFrame.o ArpFrame.o TcpFrame.o
+	g++ -o main main.o Trame.o IpFrame.o fonctionsMaths.o Data.o IcmpFrame.o ArpFrame.o TcpFrame.o
 
 Trame.o: Trame.cpp Trame.h fonctionsMaths.h IpFrame.h
 	g++ -Wall -c Trame.cpp
 
-IpFrame.o: IpFrame.cpp IpFrame.h Data.h IcmpFrame.h
+IpFrame.o: IpFrame.cpp IpFrame.h Data.h IcmpFrame.h TcpFrame.h
 	g++ -Wall -c IpFrame.cpp
 
 fonctionsMaths.o: fonctionsMaths.cpp fonctionsMaths.h
@@ -16,10 +16,13 @@ Data.o:	Data.cpp Data.h fonctionsMaths.h
 	g++ -Wall -c Data.cpp
 
 ArpFrame.o:	ArpFrame.cpp ArpFrame.h Data.h
-		g++ -Wall -c ArpFrame.cpp
+	g++ -Wall -c ArpFrame.cpp
 
-IcmpFrame.o:	IcmpFrame.cpp IcmpFrame.h Data.h
-				g++ -Wall -c IcmpFrame.cpp
+IcmpFrame.o: IcmpFrame.cpp IcmpFrame.h Data.h
+	g++ -Wall -c IcmpFrame.cpp
+
+TcpFrame.o: TcpFrame.cpp TcpFrame.h Data.h
+	g++ -Wall -c TcpFrame.cpp
 
 clean:
 	rm -f main *.o

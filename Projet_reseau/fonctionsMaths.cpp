@@ -4,55 +4,88 @@
 #include <fstream>
 #include <math.h>
 
+int fonctionsMaths::est_hexadecimal(char c)
+{
+    if ((c <= 'f' && c >= 'a') || (c <= 'F' && c >= 'A') || (c <= '9' && c >= '0'))
+        return 1;
+    return 0;
+}
+
 unsigned long fonctionsMaths::hexToDec(std::string n,int taille)
 {
     unsigned long r = 0;
     unsigned long tmp = 0;
     for (int i = taille - 1; i >= 0; i = i-1 ){
-        if ((n[i] <= 'f' && n[i] >= 'a') || (n[i] <= 'F' && n[i] >= 'A')) {
-            if (n[i] <= 'f' && n[i] >= 'a')
-                tmp = n[i] - 87;
-            else
-                tmp = n[i] - 55;
+        if (fonctionsMaths::est_hexadecimal(n[i])) {
+            if ((n[i] <= 'f' && n[i] >= 'a') || (n[i] <= 'F' && n[i] >= 'A')) {
+                if (n[i] <= 'f' && n[i] >= 'a')
+                    tmp = n[i] - 87;
+                else
+                    tmp = n[i] - 55;
+            }
+            else {
+                if (n[i] <= '9' && n[i] >= '0')
+                    tmp = n[i] - 48;
+            }
+            r = r + tmp * (unsigned long)pow(16, taille - i - 1);
         }
         else {
-            if (n[i] <= '9' && n[i] >= '0')
-                tmp = n[i] - 48;
-            else {
-                std::cout << "Erreur convertisseur hexToDec : '" << n[i] << "' n'est pas en hexadecimal\n";
-                return -1;
-            }
+            // Le caractère n'est pas hexadecimal
+            return -1;
         }
-        r = r + tmp * (unsigned long) pow(16, taille - i - 1);
     }
     return r;
 }
 
-std::string fonctionsMaths::getByteLine(std::ifstream* f)
+
+
+std::string fonctionsMaths::getByteLine(std::string line, int*offset)
 {
     //Analyse UNE SEULE LIGNE du fichier
-    if (*f) {
+    if (not(line =="")) {
         int i = 0;
-        std::string line;
         char byteLine[33];
-        std::getline(*f,line);
+        if (line.length() < 6) {
+            // La ligne est trop courte pour etre correct
+            return "";
+        }
+        if((int)fonctionsMaths::hexToDec(line, 4) == *(offset)) // on vérifie que l'offset correspond à ce qu'on lit
+          line = &(line[5]);     // si ça correspond, on passe au contenu de la ligne
+        else
+          return "";  // s'il ne correspond pas, on passe directement à la ligne suivante
+
         while ((i < 16) && (( i * 3 + 1) < line.length()) ) {
-            if (((line[ i * 3] < 'a' || line[ i * 3 ]>'f') && (line[i * 3] < 'A' || line[i * 3]>'F') && (line[i * 3] < '0' || line[i * 3]>'9'))
-                || ((line[i * 3 + 1] < 'a' || line[i * 3 + 1]>'f') && (line[i * 3 + 1] < 'A' || line[i * 3 + 1]>'F') && (line[i * 3 + 1] < '0' || line[i * 3 + 1]>'9'))
-                ) { //Le caractere scann'e n'est pas un caractere hexadecimal
+            if ( not(fonctionsMaths::est_hexadecimal(line[i*3])) || not(fonctionsMaths::est_hexadecimal(line[i*3 + 1]) ))
+                { //Le caractere scann'e n'est pas un caractere hexadecimal
                 byteLine[i * 2] = '\0';
                 return byteLine;
             }
             byteLine[i*2] = line[i*3];
             byteLine[(i*2)+1] = line[i * 3 + 1];
             i = i + 1;
+            (*offset) = (*offset) + 1;
         }
         byteLine[i * 2] = '\0';
         return byteLine;
     }
-    else
-        std::cout << "Erreur ouverture fichier\n";
-    return "-1" ;
+    return "" ;
+}
+
+std::string fonctionsMaths::getByteFile(std::ifstream* f, std::string chaine)
+{
+    std::string line;
+    std::string byteLine;
+    int offset = 0; // initialise offset décimal à 0
+
+    if (f == NULL) {
+        std::cout << "Erreur ouverture du fichier\n";
+        return "";
+    }
+    while (getline(*f, line)) {
+        byteLine = fonctionsMaths::getByteLine(line, &(offset));
+        chaine.append(byteLine);
+    }
+    return chaine;
 }
 
 char* fonctionsMaths::getIcmpType(int type, char* p) {
@@ -187,9 +220,4 @@ unsigned int fonctionsMaths::length(char* chaine)
     return i;
 }
 
-int fonctionsMaths::est_hexadecimal(char c)
-{
-    if ((c <= 'f' && c >= 'a') || (c <= 'F' && c >= 'A') || (c <= '9' && c >= '0'))
-        return 1;
-    return 0;
-}
+

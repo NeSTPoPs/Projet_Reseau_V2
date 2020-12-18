@@ -85,6 +85,10 @@ void Trame::afficherTrame()
 
 void Trame::construireTrame(std::string chaine)
 {
+	if (chaine.length() < 28) {
+		std::cout << "Impossible de creer une trame Ethernet : la trame donnee est trop courte\n";
+		return ;
+	}
 	/* Comment ça marche ?
 	On part d'une chaine déjà décodé et sans erreurs, en hexadecimal, sans espace, sans préambule.
 	On lit les 14 premiers octets (28 premiers caracteres) puis on place le reste dans l'attribut d (Data) puis on appelle la fonction de decodage lié à Data
