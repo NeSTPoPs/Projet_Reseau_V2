@@ -13,7 +13,6 @@ int fonctionsMaths::est_hexadecimal(char c)
 
 int fonctionsMaths::hexToDec(std::string n,int taille)
 {
-    printf("Hextod\n");
     int r = 0;
     int tmp = 0;
     for (int i = taille - 1; i >= 0; i = i-1 ){

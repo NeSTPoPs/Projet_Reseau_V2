@@ -13,6 +13,6 @@ int main() {
 	
 	trame = fonctionsMaths::getByteFile(&f, trame);
 	TrameList EthList = TrameList(trame);
-	//EthList.afficherListe();
+	EthList.afficherListe();
 	return 0;
 }
