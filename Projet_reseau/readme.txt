@@ -56,5 +56,7 @@ Fonctionnement
 
 
 
+Merci à Monsieur Spathis, notre professeur de Réseaux cette année qui nous guida
+également dans la création de ce projet en tant que chargé de TD et TP de notre groupe. 
 
 Créé par Pierre-Alexandre Gruman et Quentin Bellut

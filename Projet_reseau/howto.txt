@@ -1,4 +1,16 @@
-Howto
+how to
+
+Pour faire fonctionner notre analyseur protocoles réseau, il suffit d'effectuer
+la commande make dans le terminal en se plaçant dans le dossier de notre projet,
+avant d'exécuter le main ("make clean" pour jeter les fichiers o).
+
+Pour sélectionner la trame voulue à analyser, il faut la copier coller
+dans le fichier "analyse_donnee.txt" avant d'effectuer les étapes évoquées précédemment.
+
+Le résultat est une analyse indentée des protocoles détectés par l'analyseur.
+Si aucun protocole n'est détecté, "" est renvoyé en sortie.
 
 
-créé par Pierre-Alexandre Gruman & Quentin Bellut
+Merci.
+
+Créé par Pierre-Alexandre Gruman & Quentin Bellut
