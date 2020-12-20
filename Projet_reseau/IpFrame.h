@@ -28,7 +28,7 @@ private:
 	int srcAdd[4];
 	int destAdd[4];
 	int options;
-	IcmpFrame* icmpF;
+	Data* d;
 };
 
 #endif

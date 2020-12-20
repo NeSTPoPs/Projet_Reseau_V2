@@ -16,6 +16,7 @@ private:
 	unsigned long int seqNum;
 	unsigned long int ackNum;
 	int dataOffset;
+	int flags;
 	int reserved;
 	int URG;
 	int ACK;

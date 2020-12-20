@@ -2,6 +2,7 @@
 #define _CRT_SECURE_NO_WARNINGS_GLOBALS
 IcmpFrame::IcmpFrame()
 {
+	this->newType("ICMP");
 	type = 0;
 	code = 0;
 	checksum = 0;

@@ -18,7 +18,7 @@ IpFrame::IpFrame() {
 		destAdd[i] = 0;
 		srcAdd[i] = 0;
 	}
-	icmpF = NULL;
+	d = NULL;
 }
 
 IpFrame::IpFrame(char* chaine)
@@ -29,8 +29,8 @@ IpFrame::IpFrame(char* chaine)
 
 IpFrame::~IpFrame()
 {
-	if (this->icmpF)
-		delete this->icmpF;
+	if (this->d)
+		delete this->d;
 }
 
 std::string IpFrame::lire()
@@ -47,8 +47,8 @@ void IpFrame::afficherData(int tabulation) {
 	tab[tabulation] = '\0';
 	char protocolName[50];
 
-	printf("%s====Datagramme IP====\n",tab);
-	printf("%sVersion: %x\n",tab, this->version);
+	printf("%s====Datagramme IP====\n", tab);
+	printf("%sVersion: %x\n", tab, this->version);
 	printf("%sIHL: %x\n", tab, this->ihl);
 	printf("%sTOS: %x\n", tab, this->tos);
 	printf("%sTotal length: %i octets\n", tab, this->totalLength);
@@ -64,8 +64,10 @@ void IpFrame::afficherData(int tabulation) {
 	printf("\n%sDestination IP Address : ", tab);
 	fonctionsMaths::afficheIpAdress(this->destAdd);
 	printf("\n");
-	if (this->icmpF)
-		this->icmpF->afficherData(tabulation + 1);
+	if (this->d) {
+		this->d->afficherData(tabulation+1);
+		std::cout << "On affiche les data\n";
+	}
 	return;
 }
 
@@ -91,13 +93,22 @@ void IpFrame::construireData(char chaine[])
 		this->destAdd[i] = fonctionsMaths::hexToDec(&(chaine[32 + (i*2)]), 2);
 	}
 
-	int i = 40;
-	while ( (i+4<this->ttl) && not (fonctionsMaths::hexToDec(&(chaine[i]), 4) == 0x0800)) {
-		//On recherche le protocole ICMP qui est après les options
-		i++;
+	
+	if (this->protocol == 1) { //Les donnees transporte par la trame IP sont de type ICMP
+		int i = 40;
+		while ((i + 4 < this->ttl) && not (fonctionsMaths::hexToDec(&(chaine[i]), 4) == 0x0800)) {
+			//On recherche le protocole ICMP qui est après les options
+			i++;
+		}
+		if (i + 4 >= this->ttl)
+			return;
+		this->d = (IcmpFrame*)this->d;
+		this->d = new IcmpFrame(&(chaine[i]));
 	}
-	if (i + 4 >= this->ttl)
-		return;
-	IcmpFrame *icmpF = new IcmpFrame(&(chaine[i]));
-	this->icmpF = icmpF;
+	if (this->protocol == 6) { //Les donnees transporte par la trame IP sont de type TCP
+		std::cout << "On construit un tcp\n";
+		this->d = (TcpFrame *)this->d;
+		this->d = new TcpFrame(&(chaine[40]));
+	}
+	return;
 }
