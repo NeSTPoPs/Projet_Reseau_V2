@@ -33,11 +33,6 @@ TcpFrame::TcpFrame(char* chaine)
 	this->construireData(chaine);
 }
 
-TcpFrame::~TcpFrame()
-{
-
-}
-
 void TcpFrame::construireData(char chaine[])
 {
 	int lecture;
@@ -101,5 +96,6 @@ void TcpFrame::afficherData(const int tabulation)
 	printf("%sWindow size value : %i\n", tab, this->window);
 	printf("%sChecksum: 0x%.4x\n", tab, this->checksum);
 	printf("%sUrgent pointer: %i\n", tab, this->urgentPointer);
+	delete[] tab;
 	return;
 }

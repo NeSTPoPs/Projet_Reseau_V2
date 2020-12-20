@@ -9,7 +9,9 @@ TrameList::TrameList()
 
 TrameList::TrameList(std::string t)
 {
-	*this = TrameList();
+	this->element = NULL;
+	this->suivant = NULL;
+	this->queue = NULL;
 	char* cstr = new char[t.length() + 1]; //On copie t dans un char * pour faire appel a strtok
 	strcpy(cstr, t.c_str());
 
@@ -21,8 +23,9 @@ TrameList::TrameList(std::string t)
 		(*eth).construireTrame(p);
 		p = strtok(NULL, " "); 
 		this->ajouter_fin(eth);
+		
 	}
-
+	
 	delete[] cstr;
 }
 
@@ -35,16 +38,15 @@ TrameList::TrameList(Trame *t)
 
 TrameList::~TrameList()
 {
-	//TrameList* tmp = this;
-	//TrameList* tmp2 = NULL;
-	//while (tmp) {
-		//tmp2 = tmp->suivant;
-		//if (tmp->element) {
-			//free(tmp->element);
-		//}
-		//free(tmp);
-		//tmp = tmp2;
-	//}
+	TrameList* tmp = this;
+	TrameList* tmp2 = NULL;
+	while (tmp) {
+		tmp2 = tmp->suivant;
+		if (tmp->element) {
+			delete (tmp->element);
+		}
+		tmp = tmp2;
+	}
 }
 
 void TrameList::ajoute_tete(Trame* t)

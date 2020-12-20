@@ -71,5 +71,24 @@ void ArpFrame::afficherData(const int tabulation)
 	printf("\n%sTarget IP address: ", tab);
 	fonctionsMaths::afficheIpAdress(this->targetIA);
 	printf("\n");
+	delete[] tab;
+	return;
+}
+
+std::string ArpFrame::toString(int tabulation) {
+	std::string tableau = std::string(tabulation, '\t');
+
+	std::string res;
+	res.append(tableau); res.append("=== ARP ===\n");
+	res.append(tableau); res.append("Hardware type :"); res.append(toString(this->hardware));
+	res.append(tableau);
+	res.append(tableau);
+	res.append(tableau);
+	res.append(tableau);
+	res.append(tableau);
+	res.append(tableau);
+	res.append(tableau);
+	res.append(tableau);
+
 	return;
 }

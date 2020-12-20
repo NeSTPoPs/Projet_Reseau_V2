@@ -55,5 +55,6 @@ void IcmpFrame::afficherData(const int tabulation)
 	printf("%sIdentifier: %i(0x%.4x)\n", tab, this->identifier, this->identifier);
 	printf("%sSequence number: %i (0x%.4x)\n", tab, this->seqNum, this->seqNum);
 	printf("%sData (%i bytes)\n", tab, fonctionsMaths::length(this->opData) / 2);
+	delete[] tab;
 
 }

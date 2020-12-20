@@ -89,6 +89,7 @@ void Trame::afficherTrame()
 
 void Trame::construireTrame(std::string chaine)
 {
+	
 	if (chaine.length() < 28) {
 		std::cout << "Impossible de creer une trame Ethernet : la trame donnee est trop courte\n";
 		return ;
@@ -97,15 +98,11 @@ void Trame::construireTrame(std::string chaine)
 	On part d'une chaine déjà décodé et sans erreurs, en hexadecimal, sans espace, sans préambule.
 	On lit les 14 premiers octets (28 premiers caracteres) puis on place le reste dans l'attribut d (Data) puis on appelle la fonction de decodage lié à Data
 	*/
-	int dest[6];
-	int src[6];
 	for (int i = 0; i < 6; i++) {
-		dest[i] = fonctionsMaths::hexToDec(&(chaine[(i*2)]), 2);
-		src[i] = fonctionsMaths::hexToDec(&(chaine[(i*2) + 12]), 2);
+		this->destAdd[i] = (int) fonctionsMaths::hexToDec(&(chaine[(((double)i)*2)]), 2);
+		this->srcAdd[i] = (int) fonctionsMaths::hexToDec(&(chaine[(((double)i) *2) + 12]), 2);
 	}
 	this->type = fonctionsMaths::hexToDec(&(chaine[24]), 4);
-	this->newDestAdd(dest);
-	this->newSrcAdd(src);
 	IpFrame* iF;
 	ArpFrame* aF;
 	switch (this->type) {

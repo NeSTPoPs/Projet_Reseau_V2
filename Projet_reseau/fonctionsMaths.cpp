@@ -11,10 +11,11 @@ int fonctionsMaths::est_hexadecimal(char c)
     return 0;
 }
 
-unsigned long fonctionsMaths::hexToDec(std::string n,int taille)
+int fonctionsMaths::hexToDec(std::string n,int taille)
 {
-    unsigned long r = 0;
-    unsigned long tmp = 0;
+    printf("Hextod\n");
+    int r = 0;
+    int tmp = 0;
     for (int i = taille - 1; i >= 0; i = i-1 ){
         if (fonctionsMaths::est_hexadecimal(n[i])) {
             if ((n[i] <= 'f' && n[i] >= 'a') || (n[i] <= 'F' && n[i] >= 'A')) {
@@ -60,7 +61,7 @@ std::string fonctionsMaths::getByteLine(std::string line, int*offset)
         }
         line = &(line[5]); // si ça correspond, on passe au contenu de la ligne
         while ((i < 16) && (((unsigned) ( i * 3 + 1)) < ((unsigned) line.length())) ) {
-            if ( not(fonctionsMaths::est_hexadecimal(line[i*3])) || not(fonctionsMaths::est_hexadecimal(line[i*3 + 1]) ))
+            if ( not(fonctionsMaths::est_hexadecimal(line[((double)i)*3])) || not(fonctionsMaths::est_hexadecimal(line[((double)i)*3 + 1]) ))
                 { //Le caractere scann'e n'est pas un caractere hexadecimal
                 byteLine[i * 2] = '\0';
                 if (new_trame == 1) {//Il s'agissait d'une nouvelle trame, donc on ajoute un espace pour l'indiquer
@@ -71,8 +72,8 @@ std::string fonctionsMaths::getByteLine(std::string line, int*offset)
                 }
                 return byteLine;
             }
-            byteLine[i*2] = line[i*3];
-            byteLine[(i*2)+1] = line[i * 3 + 1];
+            byteLine[i*2] = line[((double)i)*3];
+            byteLine[(i*2)+1] = line[((double)i) * 3 + 1];
             i = i + 1;
             (*offset) = (*offset) + 1;
         }
@@ -88,7 +89,7 @@ std::string fonctionsMaths::getByteLine(std::string line, int*offset)
     return "" ;
 }
 
-std::string fonctionsMaths::getByteFile(std::ifstream* f, std::string *chaine)
+std::string fonctionsMaths::getByteFile(std::ifstream* f, std::string chaine)
 {
     std::string line;
     std::string byteLine;
@@ -100,9 +101,9 @@ std::string fonctionsMaths::getByteFile(std::ifstream* f, std::string *chaine)
     }
     while (getline(*f, line)) {
         byteLine = fonctionsMaths::getByteLine(line, &(offset));
-        (*chaine).append(byteLine);
+        chaine.append(byteLine);
     }
-    return (*chaine);
+    return chaine;
 }
 
 char* fonctionsMaths::getIcmpType(int type, char* p) {

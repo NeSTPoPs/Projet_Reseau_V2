@@ -143,6 +143,7 @@
     <ClCompile Include="Data.cpp" />
     <ClCompile Include="DataType.cpp" />
     <ClCompile Include="fonctionsMaths.cpp" />
+    <ClCompile Include="HttpFrame.cpp" />
     <ClCompile Include="IcmpFrame.cpp" />
     <ClCompile Include="IpFrame.cpp" />
     <ClCompile Include="main.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="Data.h" />
     <ClInclude Include="DataType.h" />
     <ClInclude Include="fonctionsMaths.h" />
+    <ClInclude Include="HttpFrame.h" />
     <ClInclude Include="IcmpFrame.h" />
     <ClInclude Include="IpFrame.h" />
     <ClInclude Include="TcpFrame.h" />
@@ -163,7 +165,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="analyse_donnee.txt" />
+    <Text Include="howto.txt" />
     <Text Include="makefile" />
+    <Text Include="readme.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

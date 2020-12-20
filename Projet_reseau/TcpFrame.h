@@ -5,7 +5,6 @@ class TcpFrame : public Data
 public:
 	TcpFrame();
 	TcpFrame(char* chaine);
-	~TcpFrame();
 
 	void construireData(char chaine[]);
 	void afficherData(const int tabulation);

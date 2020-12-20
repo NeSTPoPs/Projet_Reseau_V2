@@ -7,10 +7,6 @@ Data::Data()
 	type = "";
 }
 
-Data::~Data()
-{
-}
-
 Data::Data(std::string type)
 {
 	this->type = type;

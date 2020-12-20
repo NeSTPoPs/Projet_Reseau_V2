@@ -66,6 +66,7 @@ void IpFrame::afficherData(int tabulation) {
 	if (this->d) {
 		this->d->afficherData(tabulation+1);
 	}
+	delete[] tab;
 	return;
 }
 

@@ -48,6 +48,9 @@
     <ClCompile Include="TrameList.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="HttpFrame.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Trame.h">
@@ -77,12 +80,21 @@
     <ClInclude Include="TrameList.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="HttpFrame.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="makefile">
       <Filter>MakeFile</Filter>
     </Text>
     <Text Include="analyse_donnee.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="howto.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="readme.txt">
       <Filter>Fichiers de ressources</Filter>
     </Text>
   </ItemGroup>
