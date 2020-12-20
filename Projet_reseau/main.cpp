@@ -10,9 +10,9 @@ using namespace std;
 int main() {
 	ifstream f("analyse_donnee.txt"); //Ouverture fichier en lecture seule
 	string trame;
-	
+
 	trame = fonctionsMaths::getByteFile(&f, trame);
 	TrameList EthList = TrameList(trame);
-	//EthList.afficherListe();
+	EthList.afficherListe();
 	return 0;
 }

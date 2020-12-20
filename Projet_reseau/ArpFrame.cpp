@@ -90,5 +90,5 @@ std::string ArpFrame::toString(int tabulation) {
 	res.append(tableau);
 	res.append(tableau);
 
-	return;
+	return "";
 }

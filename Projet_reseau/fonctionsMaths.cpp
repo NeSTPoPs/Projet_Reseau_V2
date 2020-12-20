@@ -13,7 +13,6 @@ int fonctionsMaths::est_hexadecimal(char c)
 
 int fonctionsMaths::hexToDec(std::string n,int taille)
 {
-    printf("Hextod\n");
     int r = 0;
     int tmp = 0;
     for (int i = taille - 1; i >= 0; i = i-1 ){
@@ -51,7 +50,7 @@ std::string fonctionsMaths::getByteLine(std::string line, int*offset)
             // La ligne est trop courte pour etre correct
             return "";
         }
-        if (not ((int)fonctionsMaths::hexToDec(line, 4) == *(offset))) { // on vérifie si l'offset correspond à ce qu'on lit  
+        if (not ((int)fonctionsMaths::hexToDec(line, 4) == *(offset))) { // on vérifie si l'offset correspond à ce qu'on lit
             if ((int)fonctionsMaths::hexToDec(line, 4) == 0) {// On a une nouvelle trame, on reinitialise l'offset et on met new_trame sur 1
                 *offset = 0;
                 new_trame = 1;
@@ -237,6 +236,3 @@ unsigned int fonctionsMaths::length(char* chaine)
     }
     return i;
 }
-
-
-

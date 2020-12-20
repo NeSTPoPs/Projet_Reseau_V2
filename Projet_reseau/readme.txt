@@ -34,18 +34,28 @@ indentés en sortie.
 
 Nous avons différents types de classes:
 
-1. Classes structurantes
 
-Data, Trame, fonctionsMaths
+1. Classe utilisant uniquement des méthodes statiques
 
-Ces classes permettent d'analyser le code hexadécimal donné en entrée
+fonctionsMaths
 
-2. Classes protocoles
+Classe permettant d'analyser le code hexadécimal donné en entrée.
+
+2. La classe Trame
+
+Element qui contient toutes les données d'une trame.
+
+3. Classe mère
+
+Data
+
+4. Les classes filles de Data
 
 IpFrame, IcmpFrame, ArpFrame, TcpFrame et HttpFrame
 
-Ces classes correspondent chacune a un protocole différent et permettent de classer
-le code hexadécimal par traces de protocoles.
+Ces classes correspondent chacune a un protocole différent et elles ont chacune
+leur propre méthode de lecture de la trame et de construction.
+
 
 Fonctionnement
 
@@ -57,6 +67,6 @@ Fonctionnement
 
 
 Merci à Monsieur Spathis, notre professeur de Réseaux cette année qui nous guida
-également dans la création de ce projet en tant que chargé de TD et TP de notre groupe. 
+également dans la création de ce projet en tant que chargé de TD et TP de notre groupe.
 
 Créé par Pierre-Alexandre Gruman et Quentin Bellut
