@@ -16,13 +16,13 @@ HttpFrame::~HttpFrame()
 {
 }
 
-void HttpFrame::construireData(char chaine[])
+void HttpFrame::construireData(char chaine[30])
 {
 
 
 }
 
-void HttpFrame::afficherData(char chaine[])
+void HttpFrame::afficherData(const int tabulation)
 {
 
 }

@@ -8,16 +8,16 @@ class HttpFrame : public Data
 public:
 	HttpFrame();
 	HttpFrame(char* chaine);
-  ~HttpFrame();
+	~HttpFrame();
 	void construireData(char chaine[]);
 	void afficherData(const int tabulation);
 private:
-  char[] host;
+  char host[30];
   int accept;
-  char[] acceptLanguage;
-  char[] connection;
+  char acceptLanguage[30];
+  char connection[30];  
   int acceptEncoding;
-  char[] userAgent;
+  char userAgent[30];
 };
 
 #endif
