@@ -33,6 +33,8 @@ public:
 	static void afficheMacAdress(int mac[6]);
 	static void afficheIpAdress(int ip[4]);
 	/* affiche correctement des addresses mac et IP avec des points */
+	static std::string toStringMacAdress(int mac[6]);
+	static std::string toStringIpAdress(int ip[4]);
 
 	static unsigned int length(char* chaine);
 

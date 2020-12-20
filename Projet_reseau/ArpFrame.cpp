@@ -82,7 +82,7 @@ std::string ArpFrame::toString(int tabulation) {
 	res.append(tableau); res.append("=== ARP ===\n");
 	res.append(tableau); res.append("Hardware type:"); res.append(toString(this->hardware));
 	res.append(tableau); res.append("Protocol type:"); res.append(toString(this->hardware));
-	res.append(tableau); res.append("Hardware type:"); res.append(toString(this->hardware));
+	res.append(tableau); res.append("Opcode:"); res.append(toString(this->operation));
 	res.append(tableau); res.append("Hardware type:"); res.append(toString(this->hardware));
 	res.append(tableau); res.append("Hardware type:"); res.append(toString(this->hardware));
 	res.append(tableau);
