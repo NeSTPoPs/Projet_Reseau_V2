@@ -9,7 +9,7 @@ Chaque début de ligne a un offset, la lecture de la trame continue tant que l'o
 suivant correspond à la valeur attendue, et que les caractères lus sont bien hexadécimaux.
 
 Pour indiquer une nouvelle trame, il faut simplement que l'offset d'une nouvelle ligne
-vale 0 (0x000).
+vaille 0 (0x000).
 
 Pour sélectionner la ou les trame(s) voulue(s) à analyser, il faut la copier coller
 dans le fichier "analyse_donnee.txt" avant d'effectuer les étapes évoquées précédemment.
