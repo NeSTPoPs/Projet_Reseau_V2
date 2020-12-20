@@ -47,6 +47,10 @@ void Trame::newData(Data *d) {
 
 void Trame::afficherTrame()
 {
+	if (this == NULL) {
+		std::cout << "ERREUR FONCTION 'afficherTrame()' : pointeur null\n";
+		return;
+	}
 	std::cout << "===Ethernet===\n";
 	std::cout << "Source MAC Address : ";
 	for (int i = 0; i < 5; i++) {

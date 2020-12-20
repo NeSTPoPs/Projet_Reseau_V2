@@ -1,7 +1,10 @@
 #Makefile pour Projet TEST
 
-main: main.o Trame.o IpFrame.o fonctionsMaths.o Data.o IcmpFrame.o ArpFrame.o TcpFrame.o
-	g++ -o main main.o Trame.o IpFrame.o fonctionsMaths.o Data.o IcmpFrame.o ArpFrame.o TcpFrame.o
+main: main.o Trame.o IpFrame.o fonctionsMaths.o Data.o IcmpFrame.o ArpFrame.o TcpFrame.o TrameList.o
+	g++ -o main main.o Trame.o IpFrame.o fonctionsMaths.o Data.o IcmpFrame.o ArpFrame.o TcpFrame.o TrameList.o
+
+TrameList.o: TrameList.cpp TrameList.h Trame.h
+	g++ -Wall -c TrameList.cpp
 
 Trame.o: Trame.cpp Trame.h fonctionsMaths.h IpFrame.h
 	g++ -Wall -c Trame.cpp

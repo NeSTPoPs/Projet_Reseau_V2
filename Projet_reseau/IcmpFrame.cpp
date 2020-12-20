@@ -41,11 +41,10 @@ void IcmpFrame::construireData(char chaine[])
 
 void IcmpFrame::afficherData(const int tabulation)
 {
-	char tab[5];
-	for (int i = 0; i < tabulation; i++) {
-		tab[i] = '\t';
-	}
-	tab[tabulation] = '\0';
+	std::string tableau = std::string(tabulation, '\t');
+	char* tab = new char[tableau.length() + 1];
+	strcpy(tab, tableau.c_str());
+
 	char typeName[50];
 	fonctionsMaths::getIcmpType(this->type, typeName);
 

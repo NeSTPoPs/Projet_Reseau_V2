@@ -148,6 +148,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TcpFrame.cpp" />
     <ClCompile Include="Trame.cpp" />
+    <ClCompile Include="TrameList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArpFrame.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="IpFrame.h" />
     <ClInclude Include="TcpFrame.h" />
     <ClInclude Include="Trame.h" />
+    <ClInclude Include="TrameList.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="analyse_donnee.txt" />

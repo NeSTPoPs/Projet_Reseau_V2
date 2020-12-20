@@ -40,13 +40,12 @@ std::string IpFrame::lire()
 }
 
 void IpFrame::afficherData(int tabulation) {
-	char tab[5];
-	for (int i = 0; i < tabulation; i++) {
-		tab[i] = '\t';
-	}
-	tab[tabulation] = '\0';
-	char protocolName[50];
+	std::string tableau = std::string(tabulation, '\t');
+	char* tab = new char[tableau.length() + 1];
+	strcpy(tab, tableau.c_str());
 
+	char protocolName[50];
+	fonctionsMaths::getProtocolName(this->protocol, protocolName);
 	printf("%s====Datagramme IP====\n", tab);
 	printf("%sVersion: %x\n", tab, this->version);
 	printf("%sIHL: %x\n", tab, this->ihl);
@@ -66,7 +65,6 @@ void IpFrame::afficherData(int tabulation) {
 	printf("\n");
 	if (this->d) {
 		this->d->afficherData(tabulation+1);
-		std::cout << "On affiche les data\n";
 	}
 	return;
 }
@@ -106,7 +104,6 @@ void IpFrame::construireData(char chaine[])
 		this->d = new IcmpFrame(&(chaine[i]));
 	}
 	if (this->protocol == 6) { //Les donnees transporte par la trame IP sont de type TCP
-		std::cout << "On construit un tcp\n";
 		this->d = (TcpFrame *)this->d;
 		this->d = new TcpFrame(&(chaine[40]));
 	}

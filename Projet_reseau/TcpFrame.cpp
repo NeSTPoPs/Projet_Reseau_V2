@@ -69,17 +69,15 @@ void TcpFrame::construireData(char chaine[])
 
 void TcpFrame::afficherData(const int tabulation)
 {
-	char tab[5];
-	for (int i = 0; i < tabulation; i++) {
-		tab[i] = '\t';
-	}
-	tab[tabulation] = '\0';
+	std::string tableau = std::string(tabulation, '\t');
+	char* tab = new char[tableau.length() + 1];
+	strcpy(tab, tableau.c_str());
 
 	printf("%s====Transmission Control Protocol====\n", tab);
 	printf("%sSource Port: %i\n", tab, this->srcPort);
 	printf("%sDestination Port: %i\n", tab, this->destPort);
-	printf("%sSequence number: %i\n", tab, this->seqNum);
-	printf("%sAcknowledgment number: %i\n", tab, this->ackNum);
+	printf("%sSequence number: %lu\n", tab, this->seqNum);
+	printf("%sAcknowledgment number: %lu\n", tab, this->ackNum);
 	printf("%sHeader length : %i octets \n", tab, this->dataOffset);
 	printf("%sFlags : 0x%.3x\n", tab, this->flags);
 	printf("%s\t..%i. .... = Urgent : ",tab, this->URG);

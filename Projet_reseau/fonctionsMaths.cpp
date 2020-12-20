@@ -44,20 +44,31 @@ std::string fonctionsMaths::getByteLine(std::string line, int*offset)
     //Analyse UNE SEULE LIGNE du fichier
     if (not(line =="")) {
         int i = 0;
-        char byteLine[33];
+        int new_trame = 0;
+        static char byteLine[33];
         if (line.length() < 6) {
             // La ligne est trop courte pour etre correct
             return "";
         }
-        if((int)fonctionsMaths::hexToDec(line, 4) == *(offset)) // on vérifie que l'offset correspond à ce qu'on lit
-          line = &(line[5]);     // si ça correspond, on passe au contenu de la ligne
-        else
-          return "";  // s'il ne correspond pas, on passe directement à la ligne suivante
-
-        while ((i < 16) && (( i * 3 + 1) < line.length()) ) {
+        if (not ((int)fonctionsMaths::hexToDec(line, 4) == *(offset))) { // on vérifie si l'offset correspond à ce qu'on lit  
+            if ((int)fonctionsMaths::hexToDec(line, 4) == 0) {// On a une nouvelle trame, on reinitialise l'offset et on met new_trame sur 1
+                *offset = 0;
+                new_trame = 1;
+            }
+            else
+                return "";  // s'il ne correspond pas et qu'il ne vaut pas 0, on passe directement à la ligne suivante
+        }
+        line = &(line[5]); // si ça correspond, on passe au contenu de la ligne
+        while ((i < 16) && (((unsigned) ( i * 3 + 1)) < ((unsigned) line.length())) ) {
             if ( not(fonctionsMaths::est_hexadecimal(line[i*3])) || not(fonctionsMaths::est_hexadecimal(line[i*3 + 1]) ))
                 { //Le caractere scann'e n'est pas un caractere hexadecimal
                 byteLine[i * 2] = '\0';
+                if (new_trame == 1) {//Il s'agissait d'une nouvelle trame, donc on ajoute un espace pour l'indiquer
+                    for (int j = i * 2; j >= 0; j--) { // On decale tous les caracteres d'un cran vers la droite pour ajouter un espace en debut de chaine
+                        byteLine[j + 1] = byteLine[j];
+                    }
+                    byteLine[0] = ' ';
+                }
                 return byteLine;
             }
             byteLine[i*2] = line[i*3];
@@ -66,12 +77,18 @@ std::string fonctionsMaths::getByteLine(std::string line, int*offset)
             (*offset) = (*offset) + 1;
         }
         byteLine[i * 2] = '\0';
+        if (new_trame == 1) {//Il s'agissait d'une nouvelle trame, donc on ajoute un espace pour l'indiquer
+            for (int j = i * 2; j >= 0; j--) { // On decale tous les caracteres d'un cran vers la droite pour ajouter un espace en debut de chaine
+                byteLine[j + 1] = byteLine[j];
+            }
+            byteLine[0] = ' ';
+        }
         return byteLine;
     }
     return "" ;
 }
 
-std::string fonctionsMaths::getByteFile(std::ifstream* f, std::string chaine)
+std::string fonctionsMaths::getByteFile(std::ifstream* f, std::string *chaine)
 {
     std::string line;
     std::string byteLine;
@@ -83,9 +100,9 @@ std::string fonctionsMaths::getByteFile(std::ifstream* f, std::string chaine)
     }
     while (getline(*f, line)) {
         byteLine = fonctionsMaths::getByteLine(line, &(offset));
-        chaine.append(byteLine);
+        (*chaine).append(byteLine);
     }
-    return chaine;
+    return (*chaine);
 }
 
 char* fonctionsMaths::getIcmpType(int type, char* p) {
@@ -133,7 +150,7 @@ char* fonctionsMaths::getIcmpType(int type, char* p) {
     default:
         pName = "Type non reconnu";
     }
-    for (int i = 0; i < pName.length(); i++) {
+    for (unsigned int i = 0; i <  pName.length(); i++) {
         p[i] = pName[i];
     }
     p[pName.length()] = '\0';
@@ -186,7 +203,7 @@ char* fonctionsMaths::getProtocolName(int protocol, char *p)
     default:
         pName = "Protocol non reconnu";
     }
-    for (int i = 0; i < pName.length(); i++) {
+    for (unsigned int i = 0; i < pName.length(); i++) {
         p[i] = pName[i];
     }
     p[pName.length()] = '\0';
@@ -219,5 +236,6 @@ unsigned int fonctionsMaths::length(char* chaine)
     }
     return i;
 }
+
 
 

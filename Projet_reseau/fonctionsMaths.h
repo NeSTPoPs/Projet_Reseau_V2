@@ -20,7 +20,7 @@ public:
 	static std::string getByteLine(std::string line, int *countOffset);
 	/* Lit une ligne du fichier f de maniere a retourner une chaine de caractere hexadecimal sans espace de maximum 16 octets (32 caracteres)*/
 
-	static std::string getByteFile(std::ifstream* f, std::string chaine);
+	static std::string getByteFile(std::ifstream* f, std::string *chaine);
 	/* Lit le fichier f passé en parametre avec les appels de la fonction getByteLine */
 
 	static char* getProtocolName(int type, char *p);
@@ -36,7 +36,6 @@ public:
 
 	static unsigned int length(char* chaine);
 
-	
 };
 
 #endif
