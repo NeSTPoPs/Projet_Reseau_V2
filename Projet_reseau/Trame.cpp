@@ -62,8 +62,7 @@ void Trame::afficherTrame()
 }
 
 std::string Trame::toString() {
-	if (this == NULL)
-		return "ERREUR FONCTION 'afficherTrame()' : pointeur null";
+
 	char protocolName[50];
 	std::stringstream s;
 	std::string res = "";
