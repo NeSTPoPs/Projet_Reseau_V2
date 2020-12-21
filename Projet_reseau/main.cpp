@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
 #include <iomanip>
 
 #include "TrameList.h"
@@ -11,10 +12,15 @@ using namespace std;
 int main() {
 
 	std::string test = "";
-	int Flags = 16;
-	//test = std::string(test) + (setw(3) << setfill('0') << Flags) ;
+	int Flags = 0x1675;
+	std::stringstream stream;
 
+	stream << std::hex << setw(3) << setfill('0') << Flags << "\n je suis une pepite de chocolat \n";
+
+	test = stream.str();
 	std::cout << test;
+	
+
 
 	ifstream f("analyse_donnee.txt"); //Ouverture fichier en lecture seule
 	string trame;
