@@ -50,7 +50,7 @@ std::string fonctionsMaths::getByteLine(std::string line, int*offset)
             // La ligne est trop courte pour etre correct
             return "";
         }
-        if (not ((int)fonctionsMaths::hexToDec(line, 4) == *(offset))) { // on vérifie si l'offset correspond à ce qu'on lit  
+        if (not ((int)fonctionsMaths::hexToDec(line, 4) == *(offset))) { // on vérifie si l'offset correspond à ce qu'on lit
             if ((int)fonctionsMaths::hexToDec(line, 4) == 0) {// On a une nouvelle trame, on reinitialise l'offset et on met new_trame sur 1
                 *offset = 0;
                 new_trame = 1;
@@ -235,28 +235,6 @@ unsigned int fonctionsMaths::length(char* chaine)
         i++;
     }
     return i;
-}
-
-std::string fonctionsMaths::toStringMacAdress(int mac[6])
-{
-    std::string res = std::to_string(mac[0]);
-
-    for (int i = 1; i < 6; i++) {
-        res.append(".");
-        res.append(std::to_string(mac[i]));
-    }
-    return res;
-}
-
-std::string fonctionsMaths::toStringIpAdress(int ip[4])
-{
-    std::string res = std::to_string(ip[0]);
-
-    for (int i = 1; i < 4; i++) {
-        res.append(".");
-        res.append(std::to_string(ip[i]));
-    }
-    return res;
 }
 
 
