@@ -12,10 +12,7 @@ using namespace std;
 int main() {
 
 	ifstream f("analyse_donnee.txt"); //Ouverture fichier en lecture seule
-	string trame;
-
-	trame = fonctionsMaths::getByteFile(&f, trame);
-	TrameList EthList = TrameList(trame);
+	TrameList EthList = TrameList(fonctionsMaths::getByteFile(&f, std::string()));
 	EthList.afficherListe();
 	EthList.ecrireListe("Resultat.txt"); //Creation d'un fichier texte avec les details des trames dessus
 	return 0;
