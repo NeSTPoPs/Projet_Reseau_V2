@@ -23,8 +23,18 @@ Trame::Trame(std::string t)
 
 Trame::~Trame()
 {
-	if (this->d)
-		delete this->d;
+	if (this->d) {
+		switch (this->type) {
+		case 0x800://IpFrame
+			delete ((IpFrame *)this->d);
+			break;
+		case 0x806://ArpFrame
+			delete ((ArpFrame *)this->d);
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void Trame::newDestAdd(int ip[6]) {
@@ -47,44 +57,6 @@ void Trame::newData(Data *d) {
 
 void Trame::afficherTrame()
 {
-	//if (this == NULL) {
-	//	std::cout << "ERREUR FONCTION 'afficherTrame()' : pointeur null\n";
-	//	return;
-	//}
-	//std::cout << "===Ethernet===\n";
-	//std::cout << "Source MAC Address: ";
-	//for (int i = 0; i < 5; i++) {
-	//	printf("%x.", this->srcAdd[i]);
-	//}
-	//printf("%x\n", this->srcAdd[5]);
-
-	//std::cout << "Destination MAC Address: ";
-	//for (int i = 0; i < 5; i++) {
-	//	printf("%x.", this->destAdd[i]);
-	//}
-	//printf("%x\n", this->destAdd[5]);
-	//printf("Type: %.4x", this->type);
-	//char protocolName[50];
-	//fonctionsMaths::getProtocolName(this->type, protocolName);
-	//printf(" (%s)\n", protocolName);
-	//IpFrame* piF;
-	//ArpFrame* paF;
-	//
-	//switch (this->type) {
-	//case 0x800:
-	//	piF = (IpFrame*)this->d; //On cast le Data comme etant un IpFrame pour avoir la bonne fonction afficherData
-	//	piF->afficherData(1);
-	//	break;
-	//case 0x806:
-	//	paF = (ArpFrame*)this->d; //On cast le Data comme etant un ArpFrame pour avoir la bonne fonction afficherData
-	//	paF->afficherData(1);
-	//	break;
-	//default:
-	//	//Protocol non reconnu
-	//	printf(" (Protocol non reconnu)\n");
-	//	return;
-	//}
-	//return;
 	std::cout << this->toString();
 	return;
 }
