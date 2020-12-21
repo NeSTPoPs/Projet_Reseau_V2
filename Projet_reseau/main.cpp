@@ -17,6 +17,6 @@ int main() {
 	trame = fonctionsMaths::getByteFile(&f, trame);
 	TrameList EthList = TrameList(trame);
 	EthList.afficherListe();
-	EthList.ecrireListe("Resultat.txt");
+	EthList.ecrireListe("Resultat.txt"); //Creation d'un fichier texte avec les details des trames dessus
 	return 0;
 }
