@@ -1,8 +1,10 @@
 #ifndef DEF_DATA
 #define DEF_DATA
-#include <sstream>
-#include "fonctionsMaths.h"
 
+#include <sstream>
+#include <iomanip>
+#include "fonctionsMaths.h"
+#include "iostream"
 
 class Data
 {

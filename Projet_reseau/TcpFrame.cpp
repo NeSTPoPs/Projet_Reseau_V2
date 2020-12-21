@@ -97,6 +97,7 @@ void TcpFrame::afficherData(const int tabulation)
 	printf("%sChecksum: 0x%.4x\n", tab, this->checksum);
 	printf("%sUrgent pointer: %i\n", tab, this->urgentPointer);
 	delete[] tab;
+	this->toString(tabulation);
 	return;
 }
 
@@ -107,31 +108,34 @@ std::string TcpFrame::toString(int tabulation) {
 	std::string res;
 	std::stringstream stream;
 
-
+	printf("APPEL FONCTION TOSTRING()\n");
 	res.append(tableau); res.append("====Transmission Control Protocol====\n");
 	res.append(tableau); res.append("Source Port: "); res.append(std::to_string(this->srcPort)); res.append("\n");
 	res.append(tableau); res.append("Destination Port: "); res.append(std::to_string(this->destPort)); res.append("\n");
 	res.append(tableau); res.append("Sequence number:"); res.append(std::to_string(this->seqNum)); res.append("\n");
 	res.append(tableau); res.append("Acknowledgment number: "); res.append(std::to_string(this->ackNum)); res.append("\n");
-	res.append(tableau); res.append("Header length : "); res.append(std::to_string(this->dataOffset)); res.append("\n");res.append(" octets\n");
-	stream << std::hex << setw(3) << setfill('0') << this->flags;
-	res.append(tableau); res.append("Flags : 0x"); res.append(std::to_string(stream.str())); res.append("\n");
-	res.append(tableau); res.append("\t..%i. .... = Urgent : "); res.append(std::to_string(this->URG));
-	if (this->URG == 0){ res.append("Not "); } res.append("set\n");
-	res.append(tableau); res.append("\t...%i .... = Acknowledgment: "); res.append(std::to_string(this->ACK));
-	if (this->ACK == 0){ res.append("Not "); } res.append("set\n");
-	res.append(tableau); res.append("\t.... %i... = Push:"); res.append(std::to_string(this->PSH));
-	if (this->PSH == 0){ res.append("Not ");} res.append("set\n");
-	res.append(tableau); res.append("\t.... .%i.. = Reset: "); res.append(std::to_string(this->RST));
-	if (this->RST == 0){ res.append("Not ");} res.append("set\n");
-	res.append(tableau); res.append("\t.... ..%i. = Syn: "); res.append(std::to_string(this->SYN));
-	if (this->SYN == 0){ res.append("Not ");} res.append("set\n");
-	res.append(tableau); res.append("	\t.... ...%i = Fin: "); res.append(std::to_string(this->FIN));
-	if (this->FIN == 0){ res.append("Not ");}	res.append("set\n");
+	res.append(tableau); res.append("Header length : "); res.append(std::to_string(this->dataOffset)); res.append(" octets\n");
+	stream << std::hex << std::setw(3) << std::setfill('0') << this->flags;
+	res.append(tableau); res.append("Flags : 0x"); res.append(stream.str()); res.append("\n");
+	res.append(tableau); res.append("\t.."); res.append(std::to_string(this->URG)); res.append(". .... = Urgent : ");
+	if (this->URG == 0) { res.append("Not "); } res.append("set\n");
+	res.append(tableau); res.append("\t..."); res.append(std::to_string(this->ACK)); res.append(" .... = Acknowledgment: ");
+	if (this->ACK == 0) { res.append("Not "); } res.append("set\n");
+	res.append(tableau); res.append("\t.... "); res.append(std::to_string(this->PSH)); res.append("... = Push: ");
+	if (this->PSH == 0) { res.append("Not "); } res.append("set\n");
+	res.append(tableau); res.append("\t.... ."); res.append(std::to_string(this->RST)); res.append(".. = Reset: ");
+	if (this->RST == 0) { res.append("Not "); } res.append("set\n");
+	res.append(tableau); res.append("\t.... .."); res.append(std::to_string(this->SYN)); res.append(". = Syn: ");
+	if (this->SYN == 0) { res.append("Not "); } res.append("set\n");
+	res.append(tableau); res.append("\t.... ..."); res.append(std::to_string(this->FIN)); res.append(" = Fin: ");
+	if (this->FIN == 0) { res.append("Not "); }	res.append("set\n");
 	res.append(tableau); res.append("Window size value : "); res.append(std::to_string(this->window)); res.append("\n");
-	stream << std::hex << setw(4) << setfill('0') << this->checksum;
-	res.append(tableau); res.append("Checksum: 0x"); res.append(std::to_string(stream.str())); res.append("\n");
+	stream.str("");
+	stream << std::hex << std::setw(4) << std::setfill('0') << this->checksum;
+	res.append(tableau); res.append("Checksum: 0x"); res.append(stream.str()); res.append("\n");
 	res.append(tableau); res.append("Urgent pointer: "); res.append(std::to_string(this->urgentPointer)); res.append("\n");
 
+
+	std::cout << res;
 	return res;
 }
