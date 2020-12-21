@@ -105,6 +105,8 @@ std::string TcpFrame::toString(int tabulation) {
 	std::string tableau = std::string(tabulation, '\t');
 
 	std::string res;
+	std::stringstream stream;
+
 
 	res.append(tableau); res.append("====Transmission Control Protocol====\n");
 	res.append(tableau); res.append("Source Port: "); res.append(std::to_string(this->srcPort)); res.append("\n");
@@ -112,7 +114,8 @@ std::string TcpFrame::toString(int tabulation) {
 	res.append(tableau); res.append("Sequence number:"); res.append(std::to_string(this->seqNum)); res.append("\n");
 	res.append(tableau); res.append("Acknowledgment number: "); res.append(std::to_string(this->ackNum)); res.append("\n");
 	res.append(tableau); res.append("Header length : "); res.append(std::to_string(this->dataOffset)); res.append("\n");res.append(" octets\n");
-	res.append(tableau); res.append("Flags : 0x"); res.append(std::to_string(this->flags)); res.append("\n");
+	stream << std::hex << setw(3) << setfill('0') << this->flags;
+	res.append(tableau); res.append("Flags : 0x"); res.append(std::to_string(stream.str())); res.append("\n");
 	res.append(tableau); res.append("\t..%i. .... = Urgent : "); res.append(std::to_string(this->URG));
 	if (this->URG == 0){ res.append("Not "); } res.append("set\n");
 	res.append(tableau); res.append("\t...%i .... = Acknowledgment: "); res.append(std::to_string(this->ACK));
@@ -126,7 +129,8 @@ std::string TcpFrame::toString(int tabulation) {
 	res.append(tableau); res.append("	\t.... ...%i = Fin: "); res.append(std::to_string(this->FIN));
 	if (this->FIN == 0){ res.append("Not ");}	res.append("set\n");
 	res.append(tableau); res.append("Window size value : "); res.append(std::to_string(this->window)); res.append("\n");
-	res.append(tableau); res.append("Checksum: 0x"); res.append(std::to_string(this->checksum)); res.append("\n");
+	stream << std::hex << setw(4) << setfill('0') << this->checksum;
+	res.append(tableau); res.append("Checksum: 0x"); res.append(std::to_string(stream.str())); res.append("\n");
 	res.append(tableau); res.append("Urgent pointer: "); res.append(std::to_string(this->urgentPointer)); res.append("\n");
 
 	return res;
