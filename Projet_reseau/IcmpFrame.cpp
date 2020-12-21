@@ -41,20 +41,29 @@ void IcmpFrame::construireData(char chaine[])
 
 void IcmpFrame::afficherData(const int tabulation)
 {
-	std::string tableau = std::string(tabulation, '\t');
-	char* tab = new char[tableau.length() + 1];
-	strcpy(tab, tableau.c_str());
+	std::cout << this->toString(tabulation);
+	return;
+}
 
+std::string IcmpFrame::toString(int tabulation) {
+	std::stringstream s;
+	std::string tab = std::string(tabulation, '\t');
 	char typeName[50];
+
 	fonctionsMaths::getIcmpType(this->type, typeName);
 
-	printf("%s=== ICMP ===\n", tab);
-	printf("%sType: %i (%s)\n", tab, this->type, typeName);
-	printf("%sCode: %i\n", tab, this->code);
-	printf("%sChecksum: 0x%.4x\n", tab, this->checksum);
-	printf("%sIdentifier: %i(0x%.4x)\n", tab, this->identifier, this->identifier);
-	printf("%sSequence number: %i (0x%.4x)\n", tab, this->seqNum, this->seqNum);
-	printf("%sData (%i bytes)\n", tab, fonctionsMaths::length(this->opData) / 2);
-	delete[] tab;
+	std::string res = tab + "=== ICMP ===\n";
+	res = res + tab + "Type: " + std::to_string(this->type) + " (" + std::string(typeName) + ")" + "\n";
+	res = res + tab + "Code: " + std::to_string(this->code) + "\n" + tab + "Checksum: 0x";
+
+	s << std::hex << std::setw(4) << std::setfill('0') << this->checksum;
+	res.append(s.str()); s.str("");
+
+	s << std::hex << std::setw(4) << std::setfill('0') << this->identifier;
+	res = res + "\n" + tab + "Identifier: " + std::to_string(this->identifier) + "(0x" +s.str() +")\n";
+	res = res + tab + "Sequence number: " + std::to_string(this->seqNum) + "\n";
+	res = res + tab + "Data (" + std::to_string(fonctionsMaths::length(this->opData)/2) + " bytes)\n";
+
+	return res;
 
 }

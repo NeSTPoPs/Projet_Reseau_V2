@@ -64,40 +64,7 @@ void TcpFrame::construireData(char chaine[])
 
 void TcpFrame::afficherData(const int tabulation)
 {
-	std::string tableau = std::string(tabulation, '\t');
-	char* tab = new char[tableau.length() + 1];
-	strcpy(tab, tableau.c_str());
-
-	printf("%s====Transmission Control Protocol====\n", tab);
-	printf("%sSource Port: %i\n", tab, this->srcPort);
-	printf("%sDestination Port: %i\n", tab, this->destPort);
-	printf("%sSequence number: %lu\n", tab, this->seqNum);
-	printf("%sAcknowledgment number: %lu\n", tab, this->ackNum);
-	printf("%sHeader length : %i octets \n", tab, this->dataOffset);
-	printf("%sFlags : 0x%.3x\n", tab, this->flags);
-	printf("%s\t..%i. .... = Urgent : ",tab, this->URG);
-	if (this->URG == 0) printf("Not ");
-	printf("set\n");
-	printf("%s\t...%i .... = Acknowledgment: ", tab, this->ACK);
-	if (this->ACK == 0) printf("Not ");
-	printf("set\n");
-	printf("%s\t.... %i... = Push: ", tab, this->PSH);
-	if (this->PSH == 0) printf("Not ");
-	printf("set\n");
-	printf("%s\t.... .%i.. = Reset: ", tab, this->RST);
-	if (this->RST == 0) printf("Not ");
-	printf("set\n");
-	printf("%s\t.... ..%i. = Syn: ", tab, this->SYN);
-	if (this->SYN == 0) printf("Not ");
-	printf("set\n");
-	printf("%s\t.... ...%i = Fin: ", tab, this->FIN);
-	if (this->FIN == 0) printf("Not ");
-	printf("set\n");
-	printf("%sWindow size value : %i\n", tab, this->window);
-	printf("%sChecksum: 0x%.4x\n", tab, this->checksum);
-	printf("%sUrgent pointer: %i\n", tab, this->urgentPointer);
-	delete[] tab;
-	this->toString(tabulation);
+	std::cout << this->toString(tabulation);
 	return;
 }
 
@@ -108,14 +75,15 @@ std::string TcpFrame::toString(int tabulation) {
 	std::string res;
 	std::stringstream stream;
 
-	printf("APPEL FONCTION TOSTRING()\n");
 	res.append(tableau); res.append("====Transmission Control Protocol====\n");
 	res.append(tableau); res.append("Source Port: "); res.append(std::to_string(this->srcPort)); res.append("\n");
 	res.append(tableau); res.append("Destination Port: "); res.append(std::to_string(this->destPort)); res.append("\n");
 	res.append(tableau); res.append("Sequence number:"); res.append(std::to_string(this->seqNum)); res.append("\n");
 	res.append(tableau); res.append("Acknowledgment number: "); res.append(std::to_string(this->ackNum)); res.append("\n");
 	res.append(tableau); res.append("Header length : "); res.append(std::to_string(this->dataOffset)); res.append(" octets\n");
+
 	stream << std::hex << std::setw(3) << std::setfill('0') << this->flags;
+
 	res.append(tableau); res.append("Flags : 0x"); res.append(stream.str()); res.append("\n");
 	res.append(tableau); res.append("\t.."); res.append(std::to_string(this->URG)); res.append(". .... = Urgent : ");
 	if (this->URG == 0) { res.append("Not "); } res.append("set\n");
@@ -135,7 +103,5 @@ std::string TcpFrame::toString(int tabulation) {
 	res.append(tableau); res.append("Checksum: 0x"); res.append(stream.str()); res.append("\n");
 	res.append(tableau); res.append("Urgent pointer: "); res.append(std::to_string(this->urgentPointer)); res.append("\n");
 
-
-	std::cout << res;
 	return res;
 }

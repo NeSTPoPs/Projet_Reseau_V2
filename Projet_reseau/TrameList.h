@@ -2,6 +2,8 @@
 #define DEF_TRAMELIST
 
 #include "Trame.h"
+#include <iomanip>
+#include <iostream>
 
 class TrameList
 {
@@ -14,6 +16,7 @@ public:
 	void ajoute_tete(Trame* t);
 	void ajouter_fin(Trame* t);
 	void afficherListe();
+	void ecrireListe(std::string const fileName);
 
 	Trame* get(int i);
 private:

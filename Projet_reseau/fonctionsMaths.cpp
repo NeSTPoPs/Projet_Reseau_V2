@@ -2,6 +2,8 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <sstream>
+#include <iomanip>
 #include <math.h>
 
 int fonctionsMaths::est_hexadecimal(char c)
@@ -239,11 +241,16 @@ unsigned int fonctionsMaths::length(char* chaine)
 
 std::string fonctionsMaths::toStringMacAdress(int mac[6])
 {
-    std::string res = std::to_string(mac[0]);
+    std::stringstream s;
+    s << std::hex << std::setw(2) << std::setfill('0') << mac[0];
+    std::string res = s.str();
+
+    
 
     for (int i = 1; i < 6; i++) {
-        res.append(".");
-        res.append(std::to_string(mac[i]));
+        s.str("");
+        s << std::hex << std::setw(2) << std::setfill('0') << mac[i];
+        res = res + "." + s.str();
     }
     return res;
 }

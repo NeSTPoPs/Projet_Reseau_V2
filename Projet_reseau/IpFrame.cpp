@@ -33,41 +33,52 @@ IpFrame::~IpFrame()
 		delete this->d;
 }
 
-std::string IpFrame::lire()
-{
-
-	return std::string();
+void IpFrame::afficherData(int tabulation) {
+	std::cout << this->toString(tabulation);
+	return;
 }
 
-void IpFrame::afficherData(int tabulation) {
-	std::string tableau = std::string(tabulation, '\t');
-	char* tab = new char[tableau.length() + 1];
-	strcpy(tab, tableau.c_str());
-
+std::string IpFrame::toString(int tabulation) {
+	std::stringstream s;
+	std::string tab = std::string(tabulation, '\t');
+	std::string res = "";
 	char protocolName[50];
 	fonctionsMaths::getProtocolName(this->protocol, protocolName);
-	printf("%s====Datagramme IP====\n", tab);
-	printf("%sVersion: %x\n", tab, this->version);
-	printf("%sIHL: %x\n", tab, this->ihl);
-	printf("%sTOS: %x\n", tab, this->tos);
-	printf("%sTotal length: %i octets\n", tab, this->totalLength);
-	printf("%sIdentification : 0x%x (%i)\n", tab, this->identification, this->identification);
-	printf("%sFlags : 0x%.4x\n", tab, this->flags);
-	printf("%sFragment offset : %i\n", tab, this->fragmentOffset);
-	printf("%sTime to live : %i\n", tab, this->ttl);
-	fonctionsMaths::getProtocolName(this->protocol, protocolName);
-	printf("%sProtocol : %i (%s)\n", tab, this->protocol, protocolName);
-	printf("%sHeader Checksum : 0x%x\n", tab, this->headerChecksum);
-	printf("%sSource IP Address : ", tab);
-	fonctionsMaths::afficheIpAdress(this->srcAdd);
-	printf("\n%sDestination IP Address : ", tab);
-	fonctionsMaths::afficheIpAdress(this->destAdd);
-	printf("\n");
+
+	res = res + tab + "====Datagramme IP====\n";
+	res = res + tab + "Version: " + std::to_string(this->version) + "\n" + tab + "IHL: 0x";
+
+	s << std::hex << std::setw(2) << std::setfill('0') << this->ihl;
+	res = res + s.str() + "\n" + tab + "TOS: 0x";
+	s.str("");
+	s << std::hex << std::setw(2) << std::setfill('0') << this->tos;
+	res = res + s.str() + "\n";
+	
+	res = res + tab + "Total length: " + std::to_string(this->totalLength) + " octets\n";
+	s.str("");
+	s << std::hex << std::setw(2) << std::setfill('0') << this->identification;
+
+	res = res + tab + "Identification: 0x" + s.str() + " (" + std::to_string(this->identification) + ")\n";
+	s.str("");
+	s << std::hex << std::setw(4) << std::setfill('0') << this->flags;
+	res = res + tab + "Flags: 0x" + s.str() + "\n";
+	res = res + tab + "Fragment offset: " + std::to_string(this->fragmentOffset) + "\n";
+	res = res + tab + "Time to live: " + std::to_string(this->ttl) + "\n";
+	res = res + tab + "Protocol: " + std::to_string(this->protocol) + " (" + std::string(protocolName) + ")\n";
+
+	s.str("");
+	s << std::hex << std::setw(4) << std::setfill('0') << this->headerChecksum;
+
+	res = res + tab + "Header checksum: 0x" + s.str() +"\n";
+	res = res + tab + "Source IP Address:" + fonctionsMaths::toStringIpAdress(this->srcAdd) + "\n";
+	res = res + tab + "Destination IP Address:" + fonctionsMaths::toStringIpAdress(this->destAdd) + "\n";
 	if (this->d) {
-		this->d->afficherData(tabulation+1);
+		if (this->protocol == 1) //ICMP
+			return res + ((IcmpFrame *)this->d)->toString(tabulation + 1);
+		if (this->protocol == 6) //TCP
+			return res + ((TcpFrame*)this->d)->toString(tabulation + 1);
 	}
-	delete[] tab;
-	return;
+	return res;
 }
 
 void IpFrame::construireData(char chaine[])

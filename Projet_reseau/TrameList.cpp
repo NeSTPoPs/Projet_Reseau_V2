@@ -78,7 +78,7 @@ void TrameList::afficherListe() {
 	while (tmp) {
 		
 		if (tmp->element) {
-			printf("===============TRAME NUMERO %i===============\n", i);
+			printf("\n\n===============TRAME NUMERO %i===============\n\n", i);
 			tmp->element->afficherTrame();
 		}
 		tmp = tmp->suivant;
@@ -95,4 +95,28 @@ Trame* TrameList::get(int i)
 	if (tmp == NULL)
 		return nullptr;
 	return tmp->element;
+}
+
+void TrameList::ecrireListe(std::string const fileName) {
+	std::ofstream file(fileName);
+
+	if (file)
+	{
+		TrameList* tmp = this;
+		int i = 1;
+		while (tmp) {
+
+			if (tmp->element) {
+				file << "\n\n===============TRAME NUMERO "<< std::to_string(i) <<"===============\n\n";
+				file << tmp->element->toString();
+			}
+			tmp = tmp->suivant;
+			i++;
+		}
+	}
+	else
+	{
+		std::cout << "ERREUR: Impossible d'ouvrir le fichier." << std::endl;
+	}
+	return;
 }

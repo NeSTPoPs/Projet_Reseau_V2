@@ -11,7 +11,6 @@ public:
 	IpFrame();
 	IpFrame(char* chaine);
 	~IpFrame();
-	std::string lire();
 	void construireData(char chaine[]);
 	void afficherData(const int tabulation);
 	std::string toString(int tabulation);

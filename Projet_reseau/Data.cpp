@@ -27,9 +27,9 @@ void Data::construireData(char chaine[])
 
 }
 
-std::string Data::lire()
+std::string Data::toString(int tabulation)
 {
-	return "Data non reconnu";
+	return "Data non reconnu\n";
 }
 
 void Data::afficherData()

@@ -49,29 +49,7 @@ void ArpFrame::construireData(char chaine[])
 
 void ArpFrame::afficherData(const int tabulation)
 {
-	std::string tableau = std::string(tabulation, '\t');
-	char* tab = new char[tableau.length() + 1];
-	strcpy(tab, tableau.c_str());
-
-	char protocolName[50];
-	fonctionsMaths::getProtocolName(this->protocol, protocolName);
-
-	printf("%s==== ARP ====\n", tab);
-	printf("%sHardware type: %i\n", tab, this->hardware);
-	printf("%sProtocol type: %.4x (%s)\n", tab, this->protocol, protocolName);
-	printf("%sHardware size: %i\n", tab, this->hLen);
-	printf("%sProtocol size: %i\n", tab, this->pLen);
-	printf("%sOpcode: %i\n", tab, this->operation);
-	printf("%sSender MAC address: ",tab);
-	fonctionsMaths::afficheMacAdress(this->senderHA);
-	printf("\n%sSender IP address: ", tab);
-	fonctionsMaths::afficheIpAdress(this->senderIA);
-	printf("\n%sTarget MAC address: ", tab);
-	fonctionsMaths::afficheMacAdress(this->targetHA);
-	printf("\n%sTarget IP address: ", tab);
-	fonctionsMaths::afficheIpAdress(this->targetIA);
-	printf("\n");
-	delete[] tab;
+	std::cout << this->toString(tabulation);
 	return;
 }
 

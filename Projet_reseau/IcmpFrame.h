@@ -10,6 +10,8 @@ public:
 	void construireData(char chaine[]);
 	void afficherData(const int tabulation);
 
+	std::string toString(int tabulation);
+
 private:
 	int type;
 	int code;

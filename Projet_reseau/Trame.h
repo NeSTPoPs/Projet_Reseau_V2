@@ -26,6 +26,8 @@ public:
 
 	void construireTrame(std::string chaine);
 
+	std::string toString();
+
 private:
 	int destAdd[6];
 	int srcAdd[6];
