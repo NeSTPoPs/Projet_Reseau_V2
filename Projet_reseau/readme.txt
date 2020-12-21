@@ -6,9 +6,6 @@ Sommaire
 
 * Introduction
 * Structure
-* Fonctionnement
-* Conclusion
-
 
 Introduction
 
@@ -56,17 +53,20 @@ IpFrame, IcmpFrame, ArpFrame, TcpFrame et HttpFrame
 Ces classes correspondent chacune a un protocole différent et elles ont chacune
 leur propre méthode de lecture de la trame et de construction.
 
+5. La classe TrameList
 
-Fonctionnement
-
--------------------------------
-
-
-
-
-
+La classe TrameList récupère toutes ces chaînes et écrit dans un fichier
+grâce à ecrireListe(string nomDuFichier) qui prend en argument le nom du fichier en sortie.
 
 Merci à Monsieur Spathis, notre professeur de Réseaux cette année qui nous guida
 également dans la création de ce projet en tant que chargé de TD et TP de notre groupe.
 
 Créé par Pierre-Alexandre Gruman et Quentin Bellut
+
+Pierre-Alexandre Gruman:
+n°étudiant: 28507556
+adresse e-mail SU: pierre-alexandre.gruman.2@etu.sorbonne-universite.fr
+
+Quentin Bellut:
+n°étudiant: 3710439
+adresse e-mail SU: quentin.bellut@etu.sorbonne-universite.fr
