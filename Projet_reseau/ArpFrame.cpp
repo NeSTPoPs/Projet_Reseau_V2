@@ -79,16 +79,15 @@ std::string ArpFrame::toString(int tabulation) {
 	std::string tableau = std::string(tabulation, '\t');
 
 	std::string res;
+
 	res.append(tableau); res.append("=== ARP ===\n");
 	res.append(tableau); res.append("Hardware type:"); res.append(toString(this->hardware));
-	res.append(tableau); res.append("Protocol type:"); res.append(toString(this->hardware));
+	res.append(tableau); res.append("Protocol type:"); res.append(toString(this->protocol));
 	res.append(tableau); res.append("Opcode:"); res.append(toString(this->operation));
-	res.append(tableau); res.append("Hardware type:"); res.append(toString(this->hardware));
-	res.append(tableau); res.append("Hardware type:"); res.append(toString(this->hardware));
-	res.append(tableau);
-	res.append(tableau);
-	res.append(tableau);
-	res.append(tableau);
+	res.append(tableau); res.append("Sender MAC address:"); res.append(fonctionsMaths::toStringMacAdress(this->senderHA));
+	res.append(tableau); res.append("Sender IP address:"); res.append(fonctionsMaths::toStringIpAdress(this->senderIA));
+	res.append(tableau); res.append("Target MAC address:"); res.append(fonctionsMaths::toStringMacAdress(this->targetHA));
+	res.append(tableau); res.append("Target IP address:"); res.append(fonctionsMaths::toStringIpAdress(this->targetIA));
 
-	return "";
+	return res;
 }

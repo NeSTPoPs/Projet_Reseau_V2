@@ -15,7 +15,7 @@ private:
   char host[30];
   int accept;
   char acceptLanguage[30];
-  char connection[30];  
+  char connection[30];
   int acceptEncoding;
   char userAgent[30];
 };
