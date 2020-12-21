@@ -8,6 +8,12 @@
 using namespace std;
 
 int main() {
+
+	std::string test = "coucou";
+	int n = 0;
+	test = test + std::to_string(("%.4x\n", n));
+	std::cout << test;
+
 	ifstream f("analyse_donnee.txt"); //Ouverture fichier en lecture seule
 	string trame;
 
