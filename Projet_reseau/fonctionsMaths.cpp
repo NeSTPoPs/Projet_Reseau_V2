@@ -237,5 +237,25 @@ unsigned int fonctionsMaths::length(char* chaine)
     return i;
 }
 
+std::string fonctionsMaths::toStringMacAdress(int mac[6])
+{
+    std::string res = std::to_string(mac[0]);
 
+    for (int i = 1; i < 6; i++) {
+        res.append(".");
+        res.append(std::to_string(mac[i]));
+    }
+    return res;
+}
+
+std::string fonctionsMaths::toStringIpAdress(int ip[4])
+{
+    std::string res = std::to_string(ip[0]);
+
+    for (int i = 1; i < 4; i++) {
+        res.append(".");
+        res.append(std::to_string(ip[i]));
+    }
+    return res;
+}
 
