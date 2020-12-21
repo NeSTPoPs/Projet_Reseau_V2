@@ -29,8 +29,8 @@ IpFrame::IpFrame(char* chaine)
 
 IpFrame::~IpFrame()
 {
-	if (this->d)
-		delete this->d;
+	//if (this->d)
+	//	delete this->d;
 }
 
 void IpFrame::afficherData(int tabulation) {
