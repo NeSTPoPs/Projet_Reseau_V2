@@ -64,6 +64,9 @@ void TcpFrame::construireData(char chaine[])
 
 void TcpFrame::afficherData(const int tabulation)
 {
+	printf("APPEL FONCTION afficherData()\n");
+	std::cout << this->toString(tabulation) ; // on print le toString
+	/*
 	std::string tableau = std::string(tabulation, '\t');
 	char* tab = new char[tableau.length() + 1];
 	strcpy(tab, tableau.c_str());
@@ -98,6 +101,7 @@ void TcpFrame::afficherData(const int tabulation)
 	printf("%sUrgent pointer: %i\n", tab, this->urgentPointer);
 	delete[] tab;
 	this->toString(tabulation);
+	*/
 	return;
 }
 
@@ -136,6 +140,6 @@ std::string TcpFrame::toString(int tabulation) {
 	res.append(tableau); res.append("Urgent pointer: "); res.append(std::to_string(this->urgentPointer)); res.append("\n");
 
 
-	std::cout << res;
+	//std::cout << res;
 	return res;
 }
