@@ -188,7 +188,7 @@ char* fonctionsMaths::getProtocolName(int protocol, char *p)
         pName = "Reservation Protocol (RSVP)";
         break;
     case 0x800:
-        pName = "DoD Internet (Datagramme IP)";
+        pName = "IPv4";
         break;
     case 0x805:
         pName = "X.25 niveau 3";
