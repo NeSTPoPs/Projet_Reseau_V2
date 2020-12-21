@@ -9,6 +9,8 @@ public:
 	void construireData(char chaine[]);
 	void afficherData(const int tabulation);
 
+	std::string toString(int tabulation);
+
 private:
 	int srcPort;
 	int destPort;
@@ -29,4 +31,3 @@ private:
 	char options[16];
 	char Data[64];
 };
-
