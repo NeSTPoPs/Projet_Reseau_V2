@@ -245,12 +245,12 @@ std::string fonctionsMaths::toStringMacAdress(int mac[6])
     s << std::hex << std::setw(2) << std::setfill('0') << mac[0];
     std::string res = s.str();
 
-    
+
 
     for (int i = 1; i < 6; i++) {
         s.str("");
         s << std::hex << std::setw(2) << std::setfill('0') << mac[i];
-        res = res + "." + s.str();
+        res = res + ":" + s.str();
     }
     return res;
 }
@@ -265,4 +265,3 @@ std::string fonctionsMaths::toStringIpAdress(int ip[4])
     }
     return res;
 }
-
