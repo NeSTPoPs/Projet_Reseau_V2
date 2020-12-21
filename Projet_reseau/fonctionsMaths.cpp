@@ -186,7 +186,7 @@ char* fonctionsMaths::getProtocolName(int protocol, char *p)
         pName = "Reservation Protocol (RSVP)";
         break;
     case 0x800:
-        pName = "DoD Internet (Datagramme IP)";
+        pName = "DoD Internet (Datagramme IP)"; // Ipv4 non ?
         break;
     case 0x805:
         pName = "X.25 niveau 3";
@@ -239,12 +239,16 @@ unsigned int fonctionsMaths::length(char* chaine)
 
 std::string fonctionsMaths::toStringMacAdress(int mac[6])
 {
-    std::string res = std::to_string(mac[0]);
+    std::string res = "";
 
-    for (int i = 1; i < 6; i++) {
-        res.append(".");
-        res.append(std::to_string(mac[i]));
+    for (int i = 0; i < 5; i++) {
+      if (mac[i]== 0) res.append("0");
+      res.append(std::to_string(mac[i]));
+      res.append(".");
     }
+    if (mac[5]== 0) res.append("0");
+    res.append(std::to_string(mac[5]));
+
     return res;
 }
 
@@ -258,4 +262,3 @@ std::string fonctionsMaths::toStringIpAdress(int ip[4])
     }
     return res;
 }
-

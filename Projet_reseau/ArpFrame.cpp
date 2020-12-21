@@ -49,12 +49,18 @@ void ArpFrame::construireData(char chaine[])
 
 void ArpFrame::afficherData(const int tabulation)
 {
+	printf("*****Print toString t******\n");
+	std::cout << this->toString(tabulation);
+
+
 	std::string tableau = std::string(tabulation, '\t');
 	char* tab = new char[tableau.length() + 1];
 	strcpy(tab, tableau.c_str());
 
 	char protocolName[50];
 	fonctionsMaths::getProtocolName(this->protocol, protocolName);
+
+	printf("*****Appel print******\n");
 
 	printf("%s==== ARP ====\n", tab);
 	printf("%sHardware type: %i\n", tab, this->hardware);
@@ -72,6 +78,7 @@ void ArpFrame::afficherData(const int tabulation)
 	fonctionsMaths::afficheIpAdress(this->targetIA);
 	printf("\n");
 	delete[] tab;
+
 	return;
 }
 
@@ -79,15 +86,21 @@ std::string ArpFrame::toString(int tabulation) {
 	std::string tableau = std::string(tabulation, '\t');
 
 	std::string res;
+	std::stringstream stream;
 
 	res.append(tableau); res.append("=== ARP ===\n");
-	res.append(tableau); res.append("Hardware type:"); res.append(std::to_string(this->hardware)); res.append("\n");
-	res.append(tableau); res.append("Protocol type:"); res.append(std::to_string(this->protocol)); res.append("\n");
-	res.append(tableau); res.append("Opcode:"); res.append(std::to_string(this->operation)); res.append("\n");
-	res.append(tableau); res.append("Sender MAC address:"); res.append(fonctionsMaths::toStringMacAdress(this->senderHA)); res.append("\n");
-	res.append(tableau); res.append("Sender IP address:"); res.append(fonctionsMaths::toStringIpAdress(this->senderIA)); res.append("\n");
-	res.append(tableau); res.append("Target MAC address:"); res.append(fonctionsMaths::toStringMacAdress(this->targetHA)); res.append("\n");
-	res.append(tableau); res.append("Target IP address:"); res.append(fonctionsMaths::toStringIpAdress(this->targetIA)); res.append("\n");
+	res.append(tableau); res.append("Hardware type: "); res.append(std::to_string(this->hardware)); res.append("\n");
+	stream << std::hex << std::setw(4) << std::setfill('0') << this->protocol;
+	char protocolName[50];
+	fonctionsMaths::getProtocolName(this->protocol, protocolName);
+	res.append(tableau); res.append("Protocol type: 0x"); res.append(stream.str()); res.append(protocolName); res.append("\n");
+	res.append(tableau); res.append("Hardware size: "); res.append(std::to_string(this->hLen)); res.append("\n");
+	res.append(tableau); res.append("Protocol size: "); res.append(std::to_string(this->pLen)); res.append("\n");
+	res.append(tableau); res.append("Opcode: "); res.append(std::to_string(this->operation)); res.append("\n");
+	res.append(tableau); res.append("Sender MAC address: "); res.append(fonctionsMaths::toStringMacAdress(this->senderHA)); res.append("\n");
+	res.append(tableau); res.append("Sender IP address: "); res.append(fonctionsMaths::toStringIpAdress(this->senderIA)); res.append("\n");
+	res.append(tableau); res.append("Target MAC address: "); res.append(fonctionsMaths::toStringMacAdress(this->targetHA)); res.append("\n");
+	res.append(tableau); res.append("Target IP address: "); res.append(fonctionsMaths::toStringIpAdress(this->targetIA)); res.append("\n");
 
 	return res;
 }

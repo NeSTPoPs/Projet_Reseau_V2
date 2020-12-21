@@ -64,7 +64,6 @@ void TcpFrame::construireData(char chaine[])
 
 void TcpFrame::afficherData(const int tabulation)
 {
-	printf("APPEL FONCTION afficherData()\n");
 	std::cout << this->toString(tabulation) ; // on print le toString
 	/*
 	std::string tableau = std::string(tabulation, '\t');
@@ -112,7 +111,6 @@ std::string TcpFrame::toString(int tabulation) {
 	std::string res;
 	std::stringstream stream;
 
-	printf("APPEL FONCTION TOSTRING()\n");
 	res.append(tableau); res.append("====Transmission Control Protocol====\n");
 	res.append(tableau); res.append("Source Port: "); res.append(std::to_string(this->srcPort)); res.append("\n");
 	res.append(tableau); res.append("Destination Port: "); res.append(std::to_string(this->destPort)); res.append("\n");
