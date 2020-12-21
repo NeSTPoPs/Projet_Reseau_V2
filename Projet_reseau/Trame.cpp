@@ -23,18 +23,18 @@ Trame::Trame(std::string t)
 
 Trame::~Trame()
 {
-	if (this->d) {
-		switch (this->type) {
-		case 0x800://IpFrame
-			delete ((IpFrame *)this->d);
-			break;
-		case 0x806://ArpFrame
-			delete ((ArpFrame *)this->d);
-			break;
-		default:
-			break;
-		}
-	}
+	//if (this->d) {
+	//	switch (this->type) {
+	//	case 0x800://IpFrame
+	//		delete ((IpFrame *)this->d);
+	//		break;
+	//	case 0x806://ArpFrame
+	//		delete ((ArpFrame *)this->d);
+	//		break;
+	//	default:
+	//		break;
+	//	}
+	//}
 }
 
 void Trame::newDestAdd(int ip[6]) {

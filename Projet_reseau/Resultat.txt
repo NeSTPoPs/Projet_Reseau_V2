@@ -3,8 +3,8 @@
 ===============TRAME NUMERO 1===============
 
 ===Ethernet===
-Source MAC Address: a0.d3.c1.48.ec.34
-Destination MAC Address: e4.5d.51.6b.f0.a8
+Source MAC Address: a0:d3:c1:48:ec:34
+Destination MAC Address: e4:5d:51:6b:f0:a8
 Type: 0x0800 (DoD Internet (Datagramme IP))
 	====Datagramme IP====
 	Version: 4
@@ -40,8 +40,8 @@ Type: 0x0800 (DoD Internet (Datagramme IP))
 ===============TRAME NUMERO 2===============
 
 ===Ethernet===
-Source MAC Address: e4.5d.51.6b.f0.a8
-Destination MAC Address: a0.d3.c1.48.ec.34
+Source MAC Address: e4:5d:51:6b:f0:a8
+Destination MAC Address: a0:d3:c1:48:ec:34
 Type: 0x0800 (DoD Internet (Datagramme IP))
 	====Datagramme IP====
 	Version: 4
@@ -77,8 +77,8 @@ Type: 0x0800 (DoD Internet (Datagramme IP))
 ===============TRAME NUMERO 3===============
 
 ===Ethernet===
-Source MAC Address: e4.5d.51.6b.f0.a8
-Destination MAC Address: a0.d3.c1.48.ec.34
+Source MAC Address: e4:5d:51:6b:f0:a8
+Destination MAC Address: a0:d3:c1:48:ec:34
 Type: 0x0806 (ARP)
 	=== ARP ===
 	Hardware type: 1
@@ -86,17 +86,17 @@ Type: 0x0806 (ARP)
 	Hardware size: 6
 	Protocol size: 4
 	Opcode: 1
-	Sender MAC address: e4.5d.51.6b.f0.a8
+	Sender MAC address: e4:5d:51:6b:f0:a8
 	Sender IP address: 192.168.1.1
-	Target MAC address: 00.00.00.00.00.00
+	Target MAC address: 00:00:00:00:00:00
 	Target IP address: 192.168.1.95
 
 
 ===============TRAME NUMERO 4===============
 
 ===Ethernet===
-Source MAC Address: a0.d3.c1.48.ec.34
-Destination MAC Address: e4.5d.51.6b.f0.a8
+Source MAC Address: a0:d3:c1:48:ec:34
+Destination MAC Address: e4:5d:51:6b:f0:a8
 Type: 0x0800 (DoD Internet (Datagramme IP))
 	====Datagramme IP====
 	Version: 4
@@ -118,3 +118,21 @@ Type: 0x0800 (DoD Internet (Datagramme IP))
 		Identifier: 1(0x0001)
 		Sequence number: 23423
 		Data (32 bytes)
+
+
+===============TRAME NUMERO 5===============
+
+===Ethernet===
+Source MAC Address: 78:dd:12:95:1f:f2
+Destination MAC Address: ff:ff:ff:ff:ff:ff
+Type: 0x0806 (ARP)
+	=== ARP ===
+	Hardware type: 1
+	Protocol type: 0x0800 DoD Internet (Datagramme IP)
+	Hardware size: 6
+	Protocol size: 4
+	Opcode: 1
+	Sender MAC address: 78:dd:12:95:1f:f2
+	Sender IP address: 192.168.1.17
+	Target MAC address: 00:00:00:00:00:00
+	Target IP address: 192.168.1.23
