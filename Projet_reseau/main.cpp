@@ -3,7 +3,6 @@
 #include <fstream>
 #include <sstream>
 #include <iomanip>
-
 #include "TrameList.h"
 #include "fonctionsMaths.h"
 
