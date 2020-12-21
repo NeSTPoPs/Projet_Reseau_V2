@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <iomanip>
 
 #include "TrameList.h"
 #include "fonctionsMaths.h"
@@ -12,7 +11,7 @@ int main() {
 
 	std::string test = "";
 	int Flags = 16;
-	//test = std::string(test) + (setw(3) << setfill('0') << Flags) ;
+	
 
 	std::cout << test;
 

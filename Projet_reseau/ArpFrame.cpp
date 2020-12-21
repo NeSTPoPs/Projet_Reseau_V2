@@ -81,9 +81,9 @@ std::string ArpFrame::toString(int tabulation) {
 	std::string res;
 
 	res.append(tableau); res.append("=== ARP ===\n");
-	res.append(tableau); res.append("Hardware type:"); res.append(toString(this->hardware)); res.append("\n");
-	res.append(tableau); res.append("Protocol type:"); res.append(toString(this->protocol)); res.append("\n");
-	res.append(tableau); res.append("Opcode:"); res.append(toString(this->operation)); res.append("\n");
+	res.append(tableau); res.append("Hardware type:"); res.append(std::to_string(this->hardware)); res.append("\n");
+	res.append(tableau); res.append("Protocol type:"); res.append(std::to_string(this->protocol)); res.append("\n");
+	res.append(tableau); res.append("Opcode:"); res.append(std::to_string(this->operation)); res.append("\n");
 	res.append(tableau); res.append("Sender MAC address:"); res.append(fonctionsMaths::toStringMacAdress(this->senderHA)); res.append("\n");
 	res.append(tableau); res.append("Sender IP address:"); res.append(fonctionsMaths::toStringIpAdress(this->senderIA)); res.append("\n");
 	res.append(tableau); res.append("Target MAC address:"); res.append(fonctionsMaths::toStringMacAdress(this->targetHA)); res.append("\n");
