@@ -4,6 +4,16 @@ Pour faire fonctionner notre analyseur protocoles réseau, il suffit d'effectuer
 la commande make dans le terminal en se plaçant dans le dossier de notre projet,
 avant d'exécuter le main ("make clean" pour jeter les fichiers o).
 
+---------------------
+Etapes:
+
+make
+
+./main
+
+make clean
+---------------------
+
 Chaque trame est composée de lignes de maximum 16 octets chacune.
 Chaque début de ligne a un offset, la lecture de la trame continue tant que l'offset
 suivant correspond à la valeur attendue, et que les caractères lus sont bien hexadécimaux.
@@ -13,9 +23,10 @@ vaille 0 (0x0000).
 
 Pour sélectionner la ou les trame(s) voulue(s) à analyser, il faut la copier coller
 dans le fichier "analyse_donnee.txt" avant d'effectuer les étapes précédentes.
+(Le fichier "anayle_donee.txt" contient déjà des trames d'exemple, que l'utilisateur peut supprimer)
 
 Le résultat est une analyse indentée des protocoles détectés par l'analyseur et stockée
-dans le fichier Resultat.txt, créé après exécution du programme. 
+dans le fichier Resultat.txt, créé après exécution du programme.
 Si aucun protocole n'est détecté, rien n'est affiché.
 
 

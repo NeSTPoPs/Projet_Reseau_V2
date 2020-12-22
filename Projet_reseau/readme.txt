@@ -8,7 +8,6 @@ Sommaire
 * Structure
 
 Introduction
-
 -------------------------------
 
 Pour ce projet d'analyseur de protocoles réseau, dans le cadre de notre UE de Réseaux
@@ -19,8 +18,8 @@ Nous avons choisi C++ car c'est un langage proche du C que nous avons étudié l
 et qui apporte un confort significatif pour la conception de nos différents analyseurs
 de protocoles réseau par classe.
 
-Structure
 
+Structure
 -------------------------------
 
 Description de la structure de notre projet:
@@ -30,7 +29,6 @@ le document "analyse_donne.txt". Puis il retourne une analyse des protocoles dé
 indentés en sortie.
 
 Nous avons différents types de classes:
-
 
 1. Classe utilisant uniquement des méthodes statiques
 
@@ -58,10 +56,18 @@ leur propre méthode de lecture de la trame et de construction.
 La classe TrameList récupère toutes ces chaînes et écrit dans un fichier
 grâce à ecrireListe(string nomDuFichier) qui prend en argument le nom du fichier en sortie.
 
+
+
+-------------------------------
+
 Merci à Monsieur Spathis, notre professeur de Réseaux cette année qui nous guida
 également dans la création de ce projet en tant que chargé de TD et TP de notre groupe.
 
+-------------------------------
+
 Créé par Pierre-Alexandre Gruman et Quentin Bellut
+
+-------------------------------
 
 Pierre-Alexandre Gruman:
 n°étudiant: 28507556
